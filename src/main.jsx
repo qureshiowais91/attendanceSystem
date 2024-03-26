@@ -19,7 +19,7 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <React.Fragment>
-      <Route path='/' element={<Layout />}>
+      <Route path='/' element={<QRscanner />}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
