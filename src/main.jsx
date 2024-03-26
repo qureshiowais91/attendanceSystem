@@ -6,7 +6,6 @@ import Login from './components/auth/login';
 import ResetPassword from './components/auth/forgotpassword';
 import LandingPage from './components/Home/index';
 import Dashboard from './components/Dashboard/Dashboard';
-import { QRscanner } from './components/QRscanner/qrscanner';
 import './index.css';
 
 import {
@@ -19,12 +18,12 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <React.Fragment>
-      <Route path='/' element={<QRscanner />}>
+      <Route path='/' element={<Layout />}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/forgotpassword' element={<ResetPassword />} />
-        <Route path='/QRscanner' element={<QRscanner/>} />
+        <Route path='/dashboard' element={<Dashboard />} />
       </Route>
     </React.Fragment>
   )
