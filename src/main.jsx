@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Layout from './components/Layout';
-import Register from './components/auth/register';
-import Login from './components/auth/login';
-import ResetPassword from './components/auth/forgotpassword';
-import LandingPage from './components/Home/index';
-import Dashboard from './components/Dashboard/Dashboard';
+import Register from './pages/auth/register';
+import Login from './pages/auth/login';
+import ResetPassword from './pages/auth/forgotpassword';
+import LandingPage from './pages/Home/index';
+import Dashboard from './pages/Dashboard/Dashboard';
 import './index.css';
 
 import {
@@ -23,8 +23,8 @@ const router = createBrowserRouter(
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/forgotpassword' element={<ResetPassword />} />
-        <Route path='/dashboard' element={<Dashboard />} />
       </Route>
+      <Route path='/school/dashboard' element={<Dashboard />} />
     </React.Fragment>
   )
 );
