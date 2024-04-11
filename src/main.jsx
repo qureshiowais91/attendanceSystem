@@ -6,6 +6,7 @@ import Login from './pages/auth/login';
 import ResetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import Dashboard from './pages/Dashboard/Dashboard';
+
 import './index.css';
 
 import {
@@ -30,5 +31,5 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}></RouterProvider>
+    <RouterProvider router={router}></RouterProvider>
 );
