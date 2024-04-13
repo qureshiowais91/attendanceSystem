@@ -1,44 +1,41 @@
 /* eslint-disable no-dupe-keys */
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { register } from '../../API/APIs';
 
 function Register() {
   const [user, setUser] = useState({});
+  const [role, setRole] = useState('parent'); // Default role is set to parent
 
-  const handler = (e) => {
+  const handleInputChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     setUser((prev) => {
       return { ...prev, [name]: value };
     });
-    console.log(user);
+  };
+
+  const handleRoleChange = (e) => {
+    setRole(e.target.value);
   };
 
   const registerHandler = async (e) => {
     e.preventDefault();
-    if (user.email === undefined) {
-      alert('Email Cant Be Empty');
-    }
-    if (user.password === undefined) {
-      alert('password Cant Be Empty');
-    }
-    if (user.confirmpassword === undefined) {
-      alert('confirmpassword Cant Be Empty');
-    }
-    if (user.password === user.confirmpassword) {
+    if (!user.email || !user.password || !user.confirmpassword) {
+      alert('Please fill in all fields');
+    } else if (user.password !== user.confirmpassword) {
+      alert('Passwords do not match');
+    } else {
       const payload = {
         email: user.email,
         password: user.password,
-        role: 'teacher',
+        role: role,
       };
       const res = await register(payload);
       const success = await res.json();
       if (success) {
         alert(success.message);
       }
-    } else {
-      alert('Password Does not Match');
     }
   };
 
@@ -48,7 +45,7 @@ function Register() {
       <form>
         <TextField
           label='Email'
-          onChange={handler}
+          onChange={handleInputChange}
           variant='outlined'
           fullWidth
           margin='normal'
@@ -61,7 +58,7 @@ function Register() {
           type='password'
           fullWidth
           margin='normal'
-          onChange={handler}
+          onChange={handleInputChange}
         />
         <TextField
           label='Confirm Password'
@@ -69,9 +66,21 @@ function Register() {
           type='password'
           name='confirmpassword'
           fullWidth
-          onChange={handler}
+          onChange={handleInputChange}
           margin='normal'
         />
+        <FormControl fullWidth margin='normal'>
+          <InputLabel id='role-label'>I Am A</InputLabel>
+          <Select
+            labelId='role-label'
+            id='role-select'
+            value={role}
+            onChange={handleRoleChange}
+          >
+            <MenuItem value='parent'>Parent</MenuItem>
+            <MenuItem value='teacher'>Teacher</MenuItem>
+          </Select>
+        </FormControl>
         <Button
           type='submit'
           variant='contained'
@@ -89,3 +98,4 @@ function Register() {
 }
 
 export default Register;
+
