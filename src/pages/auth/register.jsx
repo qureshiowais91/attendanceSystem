@@ -17,13 +17,28 @@ function Register() {
 
   const registerHandler = async (e) => {
     e.preventDefault();
+    if (user.email === undefined) {
+      alert('Email Cant Be Empty');
+    }
+    if (user.password === undefined) {
+      alert('password Cant Be Empty');
+    }
+    if (user.confirmpassword === undefined) {
+      alert('confirmpassword Cant Be Empty');
+    }
     if (user.password === user.confirmpassword) {
       const payload = {
         email: user.email,
         password: user.password,
         role: 'teacher',
       };
-      register(payload);
+      const res = await register(payload);
+      const success = await res.json();
+      if (success) {
+        alert(success.message);
+      }
+    } else {
+      alert('Password Does not Match');
     }
   };
 
