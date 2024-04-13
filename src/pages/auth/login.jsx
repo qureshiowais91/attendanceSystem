@@ -1,36 +1,40 @@
-import { TextField, Button } from '@mui/material';
 import { useState } from 'react';
+import { TextField, Button } from '@mui/material';
 import { login } from '../../API/APIs';
 
 function Login() {
   const [user, setUser] = useState({});
+  const [error, setError] = useState('');
 
-  const handler = (e) => {
-    e.preventDefault();
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser((prev) => {
-      return { ...prev, [name]: value };
-    });
+    setUser((prev) => ({ ...prev, [name]: value }));
+    setError(''); // Clear any previous error message when user starts typing
   };
 
-  const loginHandler = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const payload = {
-      email: user.email,
-      password: user.password,
-    };
-    login(payload);
+    try {
+      const payload = {
+        email: user.email,
+        password: user.password,
+      };
+      const res = await login(payload);
+      await res.json();
+    } catch (error) {
+      setError('Try Again');
+    }
   };
 
   return (
     <div>
       <h2>Login</h2>
-      <form>
+      <form onSubmit={handleLogin}>
         <TextField
           name='email'
           label='Email'
           variant='outlined'
-          onChange={handler}
+          onChange={handleChange}
           fullWidth
           margin='normal'
         />
@@ -40,11 +44,12 @@ function Login() {
           variant='outlined'
           type='password'
           fullWidth
-          onChange={handler}
+          onChange={handleChange}
           margin='normal'
         />
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <Button
-          onClick={loginHandler}
+          type='submit'
           variant='contained'
           color='primary'
           fullWidth
