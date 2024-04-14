@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { login } from '../../API/APIs';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../features/auth/authSlice';
 
 function Login() {
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,7 +23,14 @@ function Login() {
         password: user.password,
       };
       const res = await login(payload);
-      await res.json();
+      const loggedin = await res.json();
+      console.log(loggedin.token);
+      if (loggedin.message) {
+        alert(loggedin.message);
+      } 
+        console.log({ isAuth: true, jwt: loggedin.token });
+        dispatch(userLogin({ isAuth: true, jwt: loggedin.token }));
+      
     } catch (error) {
       setError('Try Again');
     }
