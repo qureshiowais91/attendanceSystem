@@ -7,6 +7,8 @@ import ResetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import Dashboard from './pages/Dashboard/Dashboard';
 
+import { Provider } from 'react-redux';
+import { store } from './services/app/store';
 import './index.css';
 
 import {
@@ -31,5 +33,7 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <Provider store={store}>
     <RouterProvider router={router}></RouterProvider>
+  </Provider>
 );
