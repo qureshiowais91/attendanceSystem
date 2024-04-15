@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import ThemeToggleButton from '../components/Theme/ThemeToggle';
+import { useDispatch } from 'react-redux';
+
 import {
   AppBar,
   Drawer,
@@ -9,10 +12,11 @@ import {
   IconButton,
 } from '@mui/material';
 import { Outlet, Link } from 'react-router-dom';
+import { themeChanger } from '../features/theme/themeSlice';
 
 function Layout() {
   const [openDrawer, setOpenDrawer] = useState(false);
-
+  const dispatch = useDispatch();
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
@@ -20,6 +24,12 @@ function Layout() {
   const handleDrawerClose = () => {
     setOpenDrawer(false);
   };
+
+  // const [darkMode, setDarkMode] = useState(false);
+
+  // const toggleDarkMode = () => {
+  //   setDarkMode(prevMode => !prevMode);
+  // };
 
   return (
     <div>
@@ -57,6 +67,14 @@ function Layout() {
           </ListItem>
           <ListItem button component={Link} to='/forgotpassword'>
             <ListItemText primary='Forgot Password' />
+          </ListItem>
+          <ListItem>
+            {/* { darkMode, toggleDarkMode } */}
+            <ThemeToggleButton
+              toggleDarkMode={() => {
+                dispatch(themeChanger({darkMode:true}));
+              }}
+            ></ThemeToggleButton>
           </ListItem>
         </List>
       </Drawer>

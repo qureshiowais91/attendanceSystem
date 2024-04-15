@@ -27,10 +27,9 @@ function Login() {
       console.log(loggedin.token);
       if (loggedin.message) {
         alert(loggedin.message);
-      } 
-        console.log({ isAuth: true, jwt: loggedin.token });
-        dispatch(userLogin({ isAuth: true, jwt: loggedin.token }));
-      
+      }
+      console.log({ isAuth: true, jwt: loggedin.token });
+      dispatch(userLogin({ isAuth: true, jwt: loggedin.token }));
     } catch (error) {
       setError('Try Again');
     }
