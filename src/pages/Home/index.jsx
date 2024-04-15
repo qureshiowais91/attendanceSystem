@@ -53,7 +53,7 @@ const LandingPage = () => {
               <img
                 width='200px'
                 height='200px'
-                src='public\ChildSafety.svg'
+                src='/ChildSafety.svg'
               ></img>
               <Typography variant='body1' paragraph>
                 Ensure the safety of children with our advanced tracking and
@@ -83,7 +83,7 @@ const LandingPage = () => {
               <img
                 width='200px'
                 height='200px'
-                src='public\SchoolListing.svg'
+                src='/SchoolListing.svg'
               ></img>
               <Typography variant='body1' paragraph>
                 List your school on our platform and allow parents to give
@@ -112,7 +112,7 @@ const LandingPage = () => {
               <img
                 width='200px'
                 height='200px'
-                src='public\FindBestSchool.svg'
+                src='/FindBestSchool.svg'
               ></img>
               <Typography variant='body1' paragraph>
                 Discover the best schools based on reviews and other details
