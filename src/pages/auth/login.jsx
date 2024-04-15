@@ -37,7 +37,7 @@ function Login() {
 
   return (
     <div>
-      <img width="200px" height="200px" src='public\login_1.svg'></img>
+      <img width="200px" height="200px" src='/login_1.svg'></img>
       <form onSubmit={handleLogin}>
         <TextField
           name='email'

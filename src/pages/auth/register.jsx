@@ -48,7 +48,7 @@ function Register() {
 
   return (
     <div >
-      <img width="200px" height="200px" src='public\register_1.svg'></img>
+      <img width="200px" height="200px" src='/register_1.svg'></img>
       <form>
         <TextField
           label='Email'

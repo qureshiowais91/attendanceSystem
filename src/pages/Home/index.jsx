@@ -23,7 +23,7 @@ const LandingPage = () => {
               <img
                 width='200px'
                 height='200px'
-                src='public\SchoolManagement.svg'
+                src='/SchoolManagement.svg'
               ></img>
 
               <Typography variant='body1' paragraph>
