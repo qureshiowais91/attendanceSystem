@@ -30,6 +30,9 @@ function Login() {
       }
       console.log({ isAuth: true, jwt: loggedin.token });
       dispatch(userLogin({ isAuth: true, jwt: loggedin.token }));
+
+      
+
     } catch (error) {
       setError('Try Again');
     }
