@@ -1,5 +1,12 @@
 /* eslint-disable no-dupe-keys */
-import { TextField, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import {
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from '@mui/material';
 import { useState } from 'react';
 import { register } from '../../API/APIs';
 
@@ -40,8 +47,8 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div >
+      <img width="200px" height="200px" src='public\register_1.svg'></img>
       <form>
         <TextField
           label='Email'
@@ -98,4 +105,3 @@ function Register() {
 }
 
 export default Register;
-
