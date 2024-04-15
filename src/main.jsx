@@ -8,9 +8,7 @@ import ResetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import Dashboard from './pages/Dashboard/Dashboard';
 
-import DarkTheme from './styles/Theme/Dark';
-// import LightTheme  from './styles/Theme/Light';
-import {  ThemeProvider } from '@mui/material/styles';
+
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
 import './index.css';
@@ -36,16 +34,11 @@ const router = createBrowserRouter(
   )
 );
 
-// const [darkMode, setDarkMode] = useState(false);
 
-// const toggleDarkMode = () => {
-//   setDarkMode(prevMode => !prevMode);
-// };
 
+// Render the app with hooks
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ThemeProvider theme={DarkTheme}>
     <Provider store={store}>
       <RouterProvider router={router}></RouterProvider>
     </Provider>
-  </ThemeProvider>
 );
