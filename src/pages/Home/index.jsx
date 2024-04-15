@@ -1,4 +1,12 @@
-import { Container, Typography, Grid, Button, Box, Card, CardContent } from '@mui/material';
+import {
+  Container,
+  Typography,
+  Grid,
+  Button,
+  Box,
+  Card,
+  CardContent,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
@@ -12,9 +20,15 @@ const LandingPage = () => {
               <Typography variant='h5' gutterBottom>
                 School Management
               </Typography>
+              <img
+                width='200px'
+                height='200px'
+                src='public\SchoolManagement.svg'
+              ></img>
+
               <Typography variant='body1' paragraph>
-                Our software simplifies school management tasks, making it easy to
-                organize and streamline administrative processes.
+                Our software simplifies school management tasks, making it easy
+                to organize and streamline administrative processes.
               </Typography>
               <Button
                 component={Link}
@@ -36,9 +50,15 @@ const LandingPage = () => {
               <Typography variant='h5' gutterBottom>
                 Child Safety
               </Typography>
+              <img
+                width='200px'
+                height='200px'
+                src='public\ChildSafety.svg'
+              ></img>
               <Typography variant='body1' paragraph>
-                Ensure the safety of children with our advanced tracking and attendance
-                system, providing peace of mind to parents and schools.
+                Ensure the safety of children with our advanced tracking and
+                attendance system, providing peace of mind to parents and
+                schools.
               </Typography>
               <Button
                 component={Link}
@@ -60,9 +80,14 @@ const LandingPage = () => {
               <Typography variant='h5' gutterBottom>
                 School Listing
               </Typography>
+              <img
+                width='200px'
+                height='200px'
+                src='public\SchoolListing.svg'
+              ></img>
               <Typography variant='body1' paragraph>
-                List your school on our platform and allow parents to give reviews,
-                helping other parents make informed decisions.
+                List your school on our platform and allow parents to give
+                reviews, helping other parents make informed decisions.
               </Typography>
               <Button
                 component={Link}
@@ -84,9 +109,14 @@ const LandingPage = () => {
               <Typography variant='h5' gutterBottom>
                 Find Best School
               </Typography>
+              <img
+                width='200px'
+                height='200px'
+                src='public\FindBestSchool.svg'
+              ></img>
               <Typography variant='body1' paragraph>
-                Discover the best schools based on reviews and other details provided
-                by schools and parents.
+                Discover the best schools based on reviews and other details
+                provided by schools and parents.
               </Typography>
               <Button
                 component={Link}
