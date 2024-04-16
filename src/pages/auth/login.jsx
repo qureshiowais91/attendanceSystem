@@ -3,11 +3,13 @@ import { TextField, Button } from '@mui/material';
 import { login } from '../../API/APIs';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,8 +33,7 @@ function Login() {
       console.log({ isAuth: true, jwt: loggedin.token });
       dispatch(userLogin({ isAuth: true, jwt: loggedin.token }));
 
-      
-
+      navigate('/user/dashboard', { replace: true });
     } catch (error) {
       setError('Try Again');
     }
@@ -40,7 +41,7 @@ function Login() {
 
   return (
     <div>
-      <img width="200px" height="200px" src='/login_1.svg'></img>
+      <img width='200px' height='200px' src='/login_1.svg'></img>
       <form onSubmit={handleLogin}>
         <TextField
           name='email'

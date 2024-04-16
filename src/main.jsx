@@ -13,6 +13,9 @@ import ProtectedLayout from './components/ProtectedLayout';
 
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
+
+import ProtectedRoute from './components/protectRoute';
+
 import './index.css';
 
 import {
@@ -33,7 +36,14 @@ const router = createBrowserRouter(
         <Route path='/validateOtp' element={<OTPValidation />} />
       </Route>
       <Route path='/user/' element={<ProtectedLayout />}>
-        <Route path='/user/dashboard' element={<Dashboard />} />
+        <Route
+          path='/user/dashboard'
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </React.Fragment>
   )

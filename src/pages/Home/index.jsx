@@ -56,7 +56,7 @@ const LandingPage = () => {
                 src='/ChildSafety.svg'
               ></img>
               <Typography variant='body1' paragraph>
-                Ensure the safety of children with our advanced tracking and
+                Ensure the safety of children with our tracking and
                 attendance system, providing peace of mind to parents and
                 schools.
               </Typography>
