@@ -12,7 +12,7 @@ import { register } from '../../API/APIs';
 
 function Register() {
   const [user, setUser] = useState({});
-  const [role, setRole] = useState('parent'); // Default role is set to parent
+  const [role, setRole] = useState('parent');
 
   const handleInputChange = (e) => {
     e.preventDefault();

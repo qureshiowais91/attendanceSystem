@@ -7,9 +7,9 @@ import Login from './pages/auth/login';
 import ResetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import Dashboard from './pages/Dashboard/Dashboard';
+import OTPValidation from './pages/auth/otpvalidation';
 
 import ProtectedLayout from './components/ProtectedLayout';
-
 
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
@@ -30,6 +30,7 @@ const router = createBrowserRouter(
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/forgotpassword' element={<ResetPassword />} />
+        <Route path='/validateOtp' element={<OTPValidation />} />
       </Route>
       <Route path='/user/' element={<ProtectedLayout />}>
         <Route path='/user/dashboard' element={<Dashboard />} />

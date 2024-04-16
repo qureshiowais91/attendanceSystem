@@ -1,11 +1,39 @@
 import { TextField, Button } from '@mui/material';
+import { resetPassword } from '../../API/APIs';
+import { useState } from 'react';
+import { otp } from '../../features/one_time_password/one_time_password';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 function ResetPassword() {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const [email, setEmail] = useState(false);
+
+  const inputHandler = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
+
+  const resetHandler = async (e) => {
+    e.preventDefault();
+    resetPassword({ email: email });
+    dispatch(otp({ email: email }));
+    navigate("/validateOtp");
+  };
+
   return (
     <div>
       <h2>Forgot Password</h2>
-      <form>
-        <TextField label='Email' variant='outlined' fullWidth margin='normal' />
+      <form onSubmit={resetHandler}>
+        <TextField
+          label='Email'
+          onChange={inputHandler}
+          variant='outlined'
+          fullWidth
+          margin='normal'
+        />
         <Button
           type='submit'
           variant='contained'
@@ -14,7 +42,7 @@ function ResetPassword() {
           size='large'
           sx={{ mt: 2 }}
         >
-          Send Reset Link To Inbox
+          Send OTP
         </Button>
       </form>
     </div>
