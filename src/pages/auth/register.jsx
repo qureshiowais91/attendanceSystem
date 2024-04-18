@@ -47,8 +47,8 @@ function Register() {
   };
 
   return (
-    <div >
-      <img width="200px" height="200px" src='/register_1.svg'></img>
+    <div>
+      <img width='200px' height='200px' src='/register_1.svg'></img>
       <form>
         <TextField
           label='Email'
@@ -86,6 +86,8 @@ function Register() {
           >
             <MenuItem value='parent'>Parent</MenuItem>
             <MenuItem value='teacher'>Teacher</MenuItem>
+            <MenuItem value='admin'>School Administrator</MenuItem>
+            <MenuItem value='student'>Create a Child Profile</MenuItem>
           </Select>
         </FormControl>
         <Button
