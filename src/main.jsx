@@ -45,14 +45,7 @@ const router = createBrowserRouter(
             </ProtectedRoute>
           }
         />
-        <Route
-          path='/user/profile'
-          element={
-            
-              <Profile />
-           
-          }
-        />
+        <Route path='/user/profile' element={<Profile />} />
       </Route>
     </React.Fragment>
   )

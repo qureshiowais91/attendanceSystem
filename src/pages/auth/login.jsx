@@ -26,14 +26,15 @@ function Login() {
       };
       const res = await login(payload);
       const loggedin = await res.json();
-      console.log(loggedin.token);
-      if (loggedin.message) {
-        alert(loggedin.message);
+      console.log(loggedin);
+      alert(loggedin.message);
+      dispatch(userLogin({ isAuth: loggedin.isAuth, jwt: loggedin.token }));
+      if (loggedin.isAuth) {
+        navigate('/user/profile');
+      } else {
+        navigate('/login');
       }
-      console.log({ isAuth: true, jwt: loggedin.token });
-      dispatch(userLogin({ isAuth: true, jwt: loggedin.token }));
-
-      navigate('/user/dashboard', { replace: true });
+      // console.log({ isAuth: true, jwt: loggedin.token });
     } catch (error) {
       setError('Try Again');
     }
