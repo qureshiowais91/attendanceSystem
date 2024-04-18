@@ -8,6 +8,7 @@ import ResetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import Dashboard from './pages/Dashboard/Dashboard';
 import OTPValidation from './pages/auth/otpvalidation';
+import Profile from './pages/Profile/profile';
 
 import ProtectedLayout from './components/ProtectedLayout';
 
@@ -42,6 +43,14 @@ const router = createBrowserRouter(
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/user/profile'
+          element={
+            
+              <Profile />
+           
           }
         />
       </Route>
