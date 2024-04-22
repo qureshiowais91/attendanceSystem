@@ -1,26 +1,52 @@
-import { useState } from 'react';
-import { Paper, Typography, Button } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { Paper, Typography } from '@mui/material';
+import { profile } from '../../API/APIs';
+import { useEffect, useState } from 'react';
 
 const SchoolProfile = () => {
-  // Dummy school data
-  const [school, setSchool] = useState({
-    name: 'ABC School',
-    address: '123 Main Street, City, Country',
-    contactDetails: 'school@example.com, (123) 456-7890',
+  const token = useSelector((state) => {
+    return state.auth.jwt;
   });
 
-  const handleUpdate = () => {
-    // Placeholder logic for updating school information
-    alert('School information updated!');
-  };
+  // Define state to store the school profile
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        // Fetch the school profile using the token
+        const res = await profile(token);
+        // Parse the response as JSON
+        const UserData = await res.json();
+        // Set the school profile in state
+        setUser(UserData);
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
+    };
+
+    fetchProfile();
+  }, [token]); // Fetch the profile whenever the token changes
+
+  // Render the school profile if available
   return (
     <Paper elevation={3} style={{ padding: '16px' }}>
-      <Typography variant="h2" gutterBottom>School Profile</Typography>
-      <Typography variant="h4" gutterBottom>Name: {school.name}</Typography>
-      <Typography variant="body1" gutterBottom>Address: {school.address}</Typography>
-      <Typography variant="body1" gutterBottom>Contact Details: {school.contactDetails}</Typography>
-      <Button variant="contained" color="primary" onClick={handleUpdate}>Update</Button>
+      <Typography variant='h3' gutterBottom>
+        Profile
+      </Typography>
+      {user && ( // Conditional rendering
+        <>
+          <Typography variant='h4' gutterBottom>
+            Name: {user.school.name}
+          </Typography>
+          <Typography variant='body1' gutterBottom>
+            Address: {user.school.address}
+          </Typography>
+          <Typography variant='body1' gutterBottom>
+            Contact Details: {user.school.contactDetails}
+          </Typography>
+        </>
+      )}
     </Paper>
   );
 };

@@ -3,7 +3,8 @@ const ENDPOINT = {
     REGISTER: "/api/auth/register",
     LOGIN: "/api/auth/login",
     RESET: "/api/resetpassword",
-    VALIDATE: "/api/validateotp"
+    VALIDATE: "/api/validateotp",
+    PROFILE: "/api/profile"
 }
 
 // Auth
@@ -51,6 +52,16 @@ const validateotp = async (payload) => {
     return await fetch(BASEURL + ENDPOINT.VALIDATE, opt)
 }
 
+const profile = async (jwt) => {
+    const opt = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwt}`
+        }
+    };
+    return await fetch(BASEURL + ENDPOINT.PROFILE, opt);
+};
 
 
-export { register, login, resetPassword,validateotp }
+export { register, login, resetPassword, validateotp, profile }
