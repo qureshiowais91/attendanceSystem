@@ -25,6 +25,8 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
+import ViewMembershipRequestsComponent from './components/UI/Request/viewRequests';
+// import Scanner from './components/Scanner/Scanner';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,6 +48,8 @@ const router = createBrowserRouter(
           }
         />
         <Route path='/user/profile' element={<Profile />} />
+        <Route path='/user/reqest' element={<ViewMembershipRequestsComponent/>}> </Route>
+        {/* <Route path='/user/scanner' element={<Scanner />} /> */}
       </Route>
     </React.Fragment>
   )

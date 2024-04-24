@@ -55,8 +55,11 @@ function ProtectedLayout() {
           }}
         >
           <List>
-            <ListItem button component={Link} to='/'>
-              <ListItemText primary='Home' />
+            <ListItem component={Link} to='/user/profile'>
+              <ListItemText primary='Profile' />
+            </ListItem>
+            <ListItem component={Link} to='/user/reqest'>
+              <ListItemText primary='Join Request ' />
             </ListItem>
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
