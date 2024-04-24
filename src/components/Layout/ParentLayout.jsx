@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ThemeToggleButton from './Theme/ThemeToggle';
+import ThemeToggleButton from '../Theme/ThemeToggle';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -12,13 +12,13 @@ import {
   IconButton,
 } from '@mui/material';
 import { Outlet, Link } from 'react-router-dom';
-import { themeChanger } from '../features/theme/themeSlice';
+import { themeChanger } from '../../features/theme/themeSlice';
 import { useSelector } from 'react-redux';
-import DarkTheme from '../styles/Theme/Dark';
-import LightTheme from '../styles/Theme/Light';
+import DarkTheme from '../../styles/Theme/Dark';
+import LightTheme from '../../styles/Theme/Light';
 import { ThemeProvider } from '@mui/material/styles';
 
-function ProtectedLayout() {
+function ParentLayout() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const dispatch = useDispatch();
   const handleDrawerOpen = () => {
@@ -55,12 +55,10 @@ function ProtectedLayout() {
           }}
         >
           <List>
-            <ListItem component={Link} to='/user/profile'>
+            <ListItem component={Link} to='/parent/profile'>
               <ListItemText primary='Profile' />
             </ListItem>
-            <ListItem component={Link} to='/user/reqest'>
-              <ListItemText primary='Join Request ' />
-            </ListItem>
+            
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
               <ThemeToggleButton
@@ -79,4 +77,4 @@ function ProtectedLayout() {
   );
 }
 
-export default ProtectedLayout;
+export default ParentLayout;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { login } from '../../API/APIs';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,10 @@ function Login() {
   const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const role = useSelector((state) => {
+    return state.auth;
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,10 +31,22 @@ function Login() {
       const res = await login(payload);
       const loggedin = await res.json();
       console.log(loggedin);
+      console.log(role);
+
       alert(loggedin.message);
-      dispatch(userLogin({ isAuth: loggedin.isAuth, jwt: loggedin.token }));
+      dispatch(
+        userLogin({
+          isAuth: loggedin.isAuth,
+          jwt: loggedin.token,
+          role: loggedin.role,
+        })
+      );
       if (loggedin.isAuth) {
-        navigate('/user/profile');
+        if (loggedin.role == 'admin') {
+          navigate('/admin/profile');
+        } else if (loggedin.role == 'parent') {
+          navigate('/parent/profile');
+        }
       } else {
         navigate('/login');
       }

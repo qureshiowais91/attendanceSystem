@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -6,16 +7,16 @@ import Register from './pages/auth/register';
 import Login from './pages/auth/login';
 import ResetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
-import Dashboard from './pages/Dashboard/Dashboard';
+// import Dashboard from './pages/Dashboard/Dashboard';
 import OTPValidation from './pages/auth/otpvalidation';
 import Profile from './pages/Profile/profile';
 
-import ProtectedLayout from './components/ProtectedLayout';
+// import ProtectedLayout from './components/Layout/AdminLayout';
 
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
 
-import ProtectedRoute from './components/protectRoute';
+// import ProtectedRoute from './components/protectRoute';
 
 import './index.css';
 
@@ -26,7 +27,18 @@ import {
   Route,
 } from 'react-router-dom';
 import ViewMembershipRequestsComponent from './components/UI/Request/viewRequests';
+import AdminLayout from './components/Layout/AdminLayout';
+import ParentLayout from './components/Layout/ParentLayout'
 // import Scanner from './components/Scanner/Scanner';
+
+// eslint-disable-next-line react-refresh/only-export-components
+const PrivateRoute = ({ element, allowedRoles }) => {
+  // Replace this with your actual authentication logic
+  const userRole = 'admin'; // Example: 'admin', 'teacher', or 'parent'
+  const isAuthorized = allowedRoles.includes(userRole);
+
+  return isAuthorized ? element : <Navigate to="/unauthorized" replace />;
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,18 +50,31 @@ const router = createBrowserRouter(
         <Route path='/forgotpassword' element={<ResetPassword />} />
         <Route path='/validateOtp' element={<OTPValidation />} />
       </Route>
-      <Route path='/user/' element={<ProtectedLayout />}>
+      <Route path='/admin/' element={<AdminLayout />}>
+        <Route path='/admin/profile' element={<Profile />} />
         <Route
-          path='/user/dashboard'
+          path='/admin/request'
           element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
+            <PrivateRoute
+              element={<ViewMembershipRequestsComponent />}
+              allowedRoles={['admin']}
+            />
           }
+          allowedRoles={['admin']}
         />
-        <Route path='/user/profile' element={<Profile />} />
-        <Route path='/user/reqest' element={<ViewMembershipRequestsComponent/>}> </Route>
-        {/* <Route path='/user/scanner' element={<Scanner />} /> */}
+      </Route>
+      <Route path='/parent/' element={<ParentLayout />}>
+        <Route path='/parent/profile' element={<Profile />} />
+        <Route
+          path='/parent/request'
+          element={
+            <PrivateRoute
+              element={<ViewMembershipRequestsComponent />}
+              allowedRoles={['admin']}
+            />
+          }
+          allowedRoles={['admin']}
+        />
       </Route>
     </React.Fragment>
   )

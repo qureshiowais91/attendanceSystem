@@ -1,43 +1,53 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Paper, Typography } from '@mui/material';
 import { profile } from '../../API/APIs';
-import { useEffect, useState } from 'react';
 
-const SchoolProfile = () => {
-  const token = useSelector((state) => {
-    return state.auth.jwt;
-  });
+const UserProfile = () => {
+  // Get the JWT token from Redux state
+  const token = useSelector((state) => state.auth.jwt);
 
-  // Define state to store the school profile
+  // Define state to store the user profile and loading state
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // Fetch the school profile using the token
+        // Fetch the user profile using the token
         const res = await profile(token);
         // Parse the response as JSON
-        const UserData = await res.json();
-        // Set the school profile in state
-        setUser(UserData);
+        const userData = await res.json();
+        // Set the user profile in state
+        setUser(userData);
+        // Set loading to false once data is fetched
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching profile:', error);
+        // Set loading to false in case of an error
+        setLoading(false);
       }
     };
 
-    fetchProfile();
+    if (token) {
+      fetchProfile();
+    }
   }, [token]); // Fetch the profile whenever the token changes
 
-  // Render the school profile if available
+  // Render the user profile or loading state
   return (
     <Paper elevation={3} style={{ padding: '16px' }}>
       <Typography variant='h3' gutterBottom>
         Profile
       </Typography>
-      {user && ( // Conditional rendering
+      {loading ? (
+        <Typography variant='body1' gutterBottom>
+          Loading...
+        </Typography>
+      ) : user && user.school ? ( // Conditional rendering
         <>
           <Typography variant='h4' gutterBottom>
-            Name: {user.school.name}
+            School: {user.school.name}
           </Typography>
           <Typography variant='body1' gutterBottom>
             Address: {user.school.address}
@@ -46,9 +56,13 @@ const SchoolProfile = () => {
             Contact Details: {user.school.contactDetails}
           </Typography>
         </>
+      ) : (
+        <Typography variant='body1' gutterBottom>
+          You Are A {user.role}
+        </Typography>
       )}
     </Paper>
   );
 };
 
-export default SchoolProfile;
+export default UserProfile;
