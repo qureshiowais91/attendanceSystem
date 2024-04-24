@@ -30,6 +30,7 @@ import ViewMembershipRequestsComponent from './components/UI/Request/viewRequest
 import AdminLayout from './components/Layout/AdminLayout';
 import ParentLayout from './components/Layout/ParentLayout';
 import TeacherLayout from './components/Layout/TeacherLayout';
+import Joinschool from './components/UI/join-school/Joinschool';
 // import Scanner from './components/Scanner/Scanner';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -66,9 +67,11 @@ const router = createBrowserRouter(
       </Route>
       <Route path='/parent/' element={<ParentLayout />}>
         <Route path='/parent/profile' element={<Profile />} />
+        <Route path='/parent/join-school' element={<Joinschool />} />
       </Route>
       <Route path='/teacher/' element={<TeacherLayout />}>
         <Route path='/teacher/profile' element={<Profile />} />
+        <Route path='/teacher/join-school' element={<Joinschool />} />
       </Route>
     </React.Fragment>
   )
