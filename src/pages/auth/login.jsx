@@ -46,6 +46,8 @@ function Login() {
           navigate('/admin/profile');
         } else if (loggedin.role == 'parent') {
           navigate('/parent/profile');
+        } else if (loggedin.role == 'teacher') {
+          navigate('/teacher/profile');
         }
       } else {
         navigate('/login');

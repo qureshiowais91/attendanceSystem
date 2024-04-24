@@ -28,7 +28,8 @@ import {
 } from 'react-router-dom';
 import ViewMembershipRequestsComponent from './components/UI/Request/viewRequests';
 import AdminLayout from './components/Layout/AdminLayout';
-import ParentLayout from './components/Layout/ParentLayout'
+import ParentLayout from './components/Layout/ParentLayout';
+import TeacherLayout from './components/Layout/TeacherLayout';
 // import Scanner from './components/Scanner/Scanner';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -37,7 +38,7 @@ const PrivateRoute = ({ element, allowedRoles }) => {
   const userRole = 'admin'; // Example: 'admin', 'teacher', or 'parent'
   const isAuthorized = allowedRoles.includes(userRole);
 
-  return isAuthorized ? element : <Navigate to="/unauthorized" replace />;
+  return isAuthorized ? element : <Navigate to='/unauthorized' replace />;
 };
 
 const router = createBrowserRouter(
@@ -65,16 +66,9 @@ const router = createBrowserRouter(
       </Route>
       <Route path='/parent/' element={<ParentLayout />}>
         <Route path='/parent/profile' element={<Profile />} />
-        <Route
-          path='/parent/request'
-          element={
-            <PrivateRoute
-              element={<ViewMembershipRequestsComponent />}
-              allowedRoles={['admin']}
-            />
-          }
-          allowedRoles={['admin']}
-        />
+      </Route>
+      <Route path='/teacher/' element={<TeacherLayout />}>
+        <Route path='/teacher/profile' element={<Profile />} />
       </Route>
     </React.Fragment>
   )

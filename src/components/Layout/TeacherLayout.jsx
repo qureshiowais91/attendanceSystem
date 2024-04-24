@@ -55,12 +55,10 @@ function AdminLayout() {
           }}
         >
           <List>
-            <ListItem component={Link} to='/user/profile'>
+            <ListItem component={Link} to='/teacher/profile'>
               <ListItemText primary='Profile' />
             </ListItem>
-            <ListItem component={Link} to='/user/reqest'>
-              <ListItemText primary='Join Request ' />
-            </ListItem>
+
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
               <ThemeToggleButton
