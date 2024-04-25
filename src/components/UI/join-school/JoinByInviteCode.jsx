@@ -20,9 +20,11 @@ const JoinByInviteCode = () => {
     // Example: Validate the invite code (replace with your validation logic)
     const isValid = value.trim() !== ''; // Validate if the code is not empty
     setIsValidCode(isValid);
-   const joinData = await joinbyInviteCode(payload);
-   const schoolUser = joinData.json();
-   console.log(schoolUser);
+    if (isValid) {
+      const joinData = await joinbyInviteCode(payload);
+      const schoolUser = joinData.json();
+      console.log(schoolUser);
+    }
   };
 
   const handleJoin = () => {

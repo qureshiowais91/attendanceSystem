@@ -58,6 +58,9 @@ function AdminLayout() {
             <ListItem component={Link} to='/admin/profile'>
               <ListItemText primary='Profile' />
             </ListItem>
+            <ListItem component={Link} to='/admin/createNewSchool'>
+              <ListItemText primary='Add New School' />
+            </ListItem>
             <ListItem component={Link} to='/admin/request'>
               <ListItemText primary='Join Request ' />
             </ListItem>

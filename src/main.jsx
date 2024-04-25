@@ -32,6 +32,7 @@ import ParentLayout from './components/Layout/ParentLayout';
 import TeacherLayout from './components/Layout/TeacherLayout';
 import JoinByInviteCode from './components/UI/join-school/JoinByInviteCode';
 import GenerateInviteCode from './pages/Dashboard/Admin/generateInviteCode';
+import CreateSchool from './pages/Dashboard/Admin/CreateSchool/CreateSchool';
 // import Scanner from './components/Scanner/Scanner';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -69,6 +70,7 @@ const router = createBrowserRouter(
           path='/admin/generateInviteCode'
           element={<GenerateInviteCode />}
         />
+        <Route path='/admin/createNewSchool' element={<CreateSchool />} />
       </Route>
       <Route path='/parent/' element={<ParentLayout />}>
         <Route path='/parent/profile' element={<Profile />} />
