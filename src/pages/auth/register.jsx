@@ -9,10 +9,15 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { register } from '../../API/APIs';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../features/auth/authSlice';
 
 function Register() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [role, setRole] = useState('parent');
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -39,9 +44,28 @@ function Register() {
         role: role,
       };
       const res = await register(payload);
-      const success = await res.json();
-      if (success) {
-        alert(success.message);
+      const loggedin = await res.json();
+      console.log(loggedin);
+      console.log(role);
+
+       dispatch(
+        userLogin({
+          isAuth: loggedin.isAuth,
+          jwt: loggedin.token,
+          role: loggedin.role,
+        })
+      );
+
+      if (loggedin.isAuth) {
+        if (loggedin.role == 'admin') {
+          navigate('/admin/createNewSchool');
+        } else if (loggedin.role == 'parent') {
+          navigate('/parent/profile');
+        } else if (loggedin.role == 'teacher') {
+          navigate('/teacher/profile');
+        }
+      } else {
+        navigate('/login');
       }
     }
   };

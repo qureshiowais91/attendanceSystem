@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { TextField, Button, Typography, Container, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { createNewSchool } from '../../../../API/APIs';
+import { useNavigate } from 'react-router-dom';
 
 const CreateSchool = () => {
+  var navigate = useNavigate();
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [contactDetails, setContactDetails] = useState('');
@@ -25,8 +27,10 @@ const CreateSchool = () => {
     try {
       // Send POST request to create school endpoint
       const response = await createNewSchool(payload);
-      const school = await response.json;
-      console.log(school)
+      const school = await response.json();
+      navigate('/admin/profile');
+
+      console.log(school);
     } catch (error) {
       // Handle error if request fails
       setMessage('Failed to create school');
