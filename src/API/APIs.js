@@ -87,7 +87,7 @@ const joinbyInviteCode = async (payload) => {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${payload.token}`
         },
-        body: JSON.stringify(payload.inviteCode),
+        body: JSON.stringify({"inviteCode":payload.inviteCode}),
 
     };
     return await fetch(BASEURL + ENDPOINT.JOINSCHOOL, opt);
