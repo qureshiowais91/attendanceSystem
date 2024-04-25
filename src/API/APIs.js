@@ -6,7 +6,8 @@ const ENDPOINT = {
     VALIDATE: "/api/validateotp",
     PROFILE: "/api/profile",
     INVITECODE: '/api/genrateInviteCode',
-    JOINSCHOOL:'api/joinbyInviteCode'
+    JOINSCHOOL: '/api/joinbyInviteCode',
+    CREATESCHOOL: '/api/school',
 }
 
 // Auth
@@ -64,7 +65,7 @@ const profile = async (jwt) => {
     };
     return await fetch(BASEURL + ENDPOINT.PROFILE, opt);
 };
-
+// inviteCode
 const updateInviteCode = async (payload) => {
     const opt = {
         method: "POST",
@@ -92,4 +93,20 @@ const joinbyInviteCode = async (payload) => {
     return await fetch(BASEURL + ENDPOINT.JOINSCHOOL, opt);
 }
 
-export { register, login, resetPassword, validateotp, profile, updateInviteCode,joinbyInviteCode }
+
+// CreateSchool by Admin Role
+const createNewSchool = async (payload) => {
+    const opt = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${payload.token}`
+        },
+        body: JSON.stringify(payload.school),
+
+    };
+    return await fetch(BASEURL + ENDPOINT.CREATESCHOOL, opt);
+}
+
+
+export { register, login, resetPassword, validateotp, profile, updateInviteCode, joinbyInviteCode, createNewSchool }
