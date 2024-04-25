@@ -5,7 +5,8 @@ const ENDPOINT = {
     RESET: "/api/resetpassword",
     VALIDATE: "/api/validateotp",
     PROFILE: "/api/profile",
-    INVITECODE: '/api/genrateInviteCode'
+    INVITECODE: '/api/genrateInviteCode',
+    JOINSCHOOL:'api/joinbyInviteCode'
 }
 
 // Auth
@@ -78,6 +79,17 @@ const updateInviteCode = async (payload) => {
 
 }
 
+const joinbyInviteCode = async (payload) => {
+    const opt = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${payload.token}`
+        },
+        body: JSON.stringify(payload.inviteCode),
 
+    };
+    return await fetch(BASEURL + ENDPOINT.JOINSCHOOL, opt);
+}
 
-export { register, login, resetPassword, validateotp, profile, updateInviteCode }
+export { register, login, resetPassword, validateotp, profile, updateInviteCode,joinbyInviteCode }
