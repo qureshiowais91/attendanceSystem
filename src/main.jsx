@@ -31,6 +31,7 @@ import AdminLayout from './components/Layout/AdminLayout';
 import ParentLayout from './components/Layout/ParentLayout';
 import TeacherLayout from './components/Layout/TeacherLayout';
 import Joinschool from './components/UI/join-school/Joinschool';
+import GenerateInviteCode from './pages/Dashboard/Admin/generateInviteCode';
 // import Scanner from './components/Scanner/Scanner';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -64,6 +65,7 @@ const router = createBrowserRouter(
           }
           allowedRoles={['admin']}
         />
+        <Route path='/admin/generateInviteCode' element={<GenerateInviteCode/>} />
       </Route>
       <Route path='/parent/' element={<ParentLayout />}>
         <Route path='/parent/profile' element={<Profile />} />

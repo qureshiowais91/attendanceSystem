@@ -4,7 +4,8 @@ const ENDPOINT = {
     LOGIN: "/api/auth/login",
     RESET: "/api/resetpassword",
     VALIDATE: "/api/validateotp",
-    PROFILE: "/api/profile"
+    PROFILE: "/api/profile",
+    INVITECODE: '/api/genrateInviteCode'
 }
 
 // Auth
@@ -63,5 +64,20 @@ const profile = async (jwt) => {
     return await fetch(BASEURL + ENDPOINT.PROFILE, opt);
 };
 
+const updateInviteCode = async (payload) => {
+    const opt = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${payload.token}`
+        },
+        body: JSON.stringify(payload.inviteCode),
 
-export { register, login, resetPassword, validateotp, profile }
+    };
+    return await fetch(BASEURL + ENDPOINT.INVITECODE, opt);
+
+}
+
+
+
+export { register, login, resetPassword, validateotp, profile, updateInviteCode }
