@@ -26,7 +26,7 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
-import ViewMembershipRequestsComponent from './components/UI/Request/viewRequests';
+// import ViewMembershipRequestsComponent from './components/UI/Request/viewRequests';
 import AdminLayout from './components/Layout/AdminLayout';
 import ParentLayout from './components/Layout/ParentLayout';
 import TeacherLayout from './components/Layout/TeacherLayout';
@@ -37,13 +37,13 @@ import StudentDetailsForm from './pages/Dashboard/Parent/AddStudent/AddStudent';
 // import Scanner from './components/Scanner/Scanner';
 
 // eslint-disable-next-line react-refresh/only-export-components
-const PrivateRoute = ({ element, allowedRoles }) => {
-  // Replace this with your actual authentication logic
-  const userRole = 'admin'; // Example: 'admin', 'teacher', or 'parent'
-  const isAuthorized = allowedRoles.includes(userRole);
+// const PrivateRoute = ({ element, allowedRoles }) => {
+//   // Replace this with your actual authentication logic
+//   const userRole = 'admin'; // Example: 'admin', 'teacher', or 'parent'
+//   const isAuthorized = allowedRoles.includes(userRole);
 
-  return isAuthorized ? element : <Navigate to='/unauthorized' replace />;
-};
+//   return isAuthorized ? element : <Navigate to='/unauthorized' replace />;
+// };
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,7 +57,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
         <Route path='/admin/profile' element={<Profile />} />
-        <Route
+        {/* <Route
           path='/admin/request'
           element={
             <PrivateRoute
@@ -66,7 +66,7 @@ const router = createBrowserRouter(
             />
           }
           allowedRoles={['admin']}
-        />
+        /> */}
         <Route
           path='/admin/generateInviteCode'
           element={<GenerateInviteCode />}
