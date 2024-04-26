@@ -61,9 +61,9 @@ function AdminLayout() {
             {/* <ListItem component={Link} to='/admin/createNewSchool'>
               <ListItemText primary='Add New School' />
             </ListItem> */}
-            <ListItem component={Link} to='/admin/request'>
+            {/* <ListItem component={Link} to='/admin/request'>
               <ListItemText primary='Join Request ' />
-            </ListItem>
+            </ListItem> */}
             <ListItem component={Link} to='/admin/generateInviteCode'>
               <ListItemText primary='Generate Invite Code' />
             </ListItem>

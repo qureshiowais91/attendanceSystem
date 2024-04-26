@@ -58,7 +58,11 @@ function ParentLayout() {
             <ListItem component={Link} to='/parent/profile'>
               <ListItemText primary='Profile' />
             </ListItem>
-            
+
+            <ListItem component={Link} to='/parent/addmychild'>
+              <ListItemText primary='Create Student Profile' />
+            </ListItem>
+
             <ListItem component={Link} to='/parent/join-school'>
               <ListItemText primary='Join School' />
             </ListItem>
