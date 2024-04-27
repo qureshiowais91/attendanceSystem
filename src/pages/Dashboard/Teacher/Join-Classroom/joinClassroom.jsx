@@ -105,16 +105,27 @@ const ListClassrooms = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(selectedId);
-    // You can perform further actions here with the selectedId
-
-    const payload = {
-      joinPayload: {
-        classroomId: selectedId
-      },
-      token: token
-    };
-    await joinClassroomTeacher(payload);
+    try {
+      console.log(selectedId);
+      // You can perform further actions here with the selectedId
+        if(!selectedId){
+            throw new Error("Select Classroom to Join")
+        }
+      const payload = {
+        joinPayload: {
+          classroomId: selectedId
+        },
+        token: token
+      };
+      await joinClassroomTeacher(payload);
+      
+      // Display alert if no errors
+      alert('Successfully joined classroom!');
+    } catch (error) {
+      console.error('Error joining classroom:', error);
+      // Handle error here (e.g., display error message)
+      alert(error);
+    }
   };
 
   return (
