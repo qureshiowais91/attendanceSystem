@@ -34,6 +34,7 @@ import JoinByInviteCode from './components/UI/join-school/JoinByInviteCode';
 import GenerateInviteCode from './pages/Dashboard/Admin/generateInviteCode';
 import CreateSchool from './pages/Dashboard/Admin/CreateSchool/CreateSchool';
 import StudentDetailsForm from './pages/Dashboard/Parent/AddStudent/AddStudent';
+import CreateClassroomForm from './pages/Dashboard/Admin/CreateClassroom/CreateClassroom';
 // import Scanner from './components/Scanner/Scanner';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -56,7 +57,9 @@ const router = createBrowserRouter(
         <Route path='/validateOtp' element={<OTPValidation />} />
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
-        <Route path='/admin/profile' element={<Profile />} />
+      <Route path='/admin/profile' element={<Profile />} />
+        <Route path='/admin/createclassroom' element={<CreateClassroomForm />} />
+      
         {/* <Route
           path='/admin/request'
           element={

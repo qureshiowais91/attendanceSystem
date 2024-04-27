@@ -8,8 +8,9 @@ const ENDPOINT = {
     INVITECODE: '/api/genrateInviteCode',
     JOINSCHOOL: '/api/joinbyInviteCode',
     CREATESCHOOL: '/api/school',
+    CREATECLASSROOM: '/api/admin/classroom',
     ADDSTUDENT: '/api/student',
-    GETCLASSROOMS:'/api/user/classrooms'
+    GETCLASSROOMS: '/api/user/classrooms'
 };
 
 // Auth
@@ -117,7 +118,7 @@ const addStudent = async (payload) => {
     return await fetch(BASEURL + ENDPOINT.ADDSTUDENT, opt);
 };
 
-const listClassroom = async(payload)=>{
+const listClassroom = async (payload) => {
     const opt = {
         method: 'GET',
         headers: {
@@ -127,6 +128,21 @@ const listClassroom = async(payload)=>{
     };
     return await fetch(BASEURL + ENDPOINT.GETCLASSROOMS, opt);
 };
+
+
+const createClassroom = async (payload) => {
+    const opt = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${payload.token}`,
+        },
+        body: JSON.stringify(payload.classroom),
+    };
+    return await fetch(BASEURL + ENDPOINT.CREATECLASSROOM, opt);
+};
+
+
 
 export {
     register,
@@ -138,5 +154,6 @@ export {
     joinbyInviteCode,
     createNewSchool,
     addStudent,
-    listClassroom
+    listClassroom,
+    createClassroom
 };

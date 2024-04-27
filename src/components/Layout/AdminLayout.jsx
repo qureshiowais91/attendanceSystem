@@ -67,6 +67,9 @@ function AdminLayout() {
             <ListItem component={Link} to='/admin/generateInviteCode'>
               <ListItemText primary='Generate Invite Code' />
             </ListItem>
+            <ListItem component={Link} to='/admin/createclassroom'>
+              <ListItemText primary='Create C lassroom' />
+            </ListItem>
 
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
