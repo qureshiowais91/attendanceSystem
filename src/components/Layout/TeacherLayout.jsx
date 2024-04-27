@@ -63,7 +63,9 @@ function AdminLayout() {
               <ListItemText primary='Join School' />
             </ListItem>
 
-
+            <ListItem component={Link} to='/teacher/join-classroom'>
+              <ListItemText primary='Join Classroom' />
+            </ListItem>
 
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}

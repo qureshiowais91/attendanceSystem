@@ -11,7 +11,8 @@ const ENDPOINT = {
     CREATECLASSROOM: '/api/admin/classroom',
     ADDSTUDENT: '/api/student',
     GETCLASSROOMS: '/api/user/classrooms',
-    JOINCLASSROOM:'/api/user/classroom/join'
+    JOINCLASSROOM: '/api/user/classroom/join',
+    JOINCLASSROOMTEACHER: '/api/user/classroomTeacher/join'
 };
 
 // Auth
@@ -143,7 +144,7 @@ const createClassroom = async (payload) => {
     return await fetch(BASEURL + ENDPOINT.CREATECLASSROOM, opt);
 };
 
-const joinClassroom =async(payload)=>{
+const joinClassroom = async (payload) => {
     const opt = {
         method: 'POST',
         headers: {
@@ -155,7 +156,19 @@ const joinClassroom =async(payload)=>{
     return await fetch(BASEURL + ENDPOINT.JOINCLASSROOM, opt);
 }
 
-export {
+const joinClassroomTeacher = async (payload) => {
+    const opt = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${payload.token}`,
+        },
+        body: JSON.stringify(payload.joinPayload),// student id and classroom id
+    };
+    return await fetch(BASEURL + ENDPOINT.JOINCLASSROOMTEACHER, opt);
+}
+
+export {    
     register,
     login,
     resetPassword,
@@ -167,5 +180,6 @@ export {
     addStudent,
     listClassroom,
     createClassroom,
-    joinClassroom
+    joinClassroom,//Student Join Classroom as soon as they are  Created by parent
+    joinClassroomTeacher
 };
