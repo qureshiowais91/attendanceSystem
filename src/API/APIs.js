@@ -9,6 +9,7 @@ const ENDPOINT = {
     JOINSCHOOL: '/api/joinbyInviteCode',
     CREATESCHOOL: '/api/school',
     ADDSTUDENT: '/api/student',
+    GETCLASSROOMS:'/api/user/classrooms'
 };
 
 // Auth
@@ -116,6 +117,17 @@ const addStudent = async (payload) => {
     return await fetch(BASEURL + ENDPOINT.ADDSTUDENT, opt);
 };
 
+const listClassroom = async(payload)=>{
+    const opt = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${payload.token}`,
+        },
+    };
+    return await fetch(BASEURL + ENDPOINT.GETCLASSROOMS, opt);
+};
+
 export {
     register,
     login,
@@ -126,4 +138,5 @@ export {
     joinbyInviteCode,
     createNewSchool,
     addStudent,
+    listClassroom
 };
