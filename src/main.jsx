@@ -36,6 +36,7 @@ import CreateSchool from './pages/Dashboard/Admin/CreateSchool/CreateSchool';
 import StudentDetailsForm from './pages/Dashboard/Parent/AddStudent/AddStudent';
 import CreateClassroomForm from './pages/Dashboard/Admin/CreateClassroom/CreateClassroom';
 import ListClassrooms  from './pages/Dashboard/Teacher/Join-Classroom/joinClassroom'
+import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance';
 // import Scanner from './components/Scanner/Scanner';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -86,6 +87,7 @@ const router = createBrowserRouter(
         <Route path='/teacher/profile' element={<Profile />} />
         <Route path='/teacher/join-school' element={<JoinByInviteCode />} />
         <Route path='/teacher/join-classroom' element={<ListClassrooms/>} />
+        <Route path='/teacher/attendance' element={<AttendanceComponent/>}/>
       </Route>
     </React.Fragment>
   )
