@@ -9,6 +9,7 @@ RUN npm install -g npm@10.6.0
 
 
 RUN npm update
+RUN npm install @rollup/rollup-linux-x64-gnu --save-optional
 RUN npm install vite@latest --save-dev
 RUN npm install  --force --legacy-peer-deps
 
