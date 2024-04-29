@@ -14,6 +14,7 @@ const ENDPOINT = {
     JOINCLASSROOM: '/api/user/classroom/join',
     LISTSTUDENT: '/api/user/classroom/students', //list student by classroomId // any teacher who is join to that same school could list and take attendance
     JOINCLASSROOMTEACHER: '/api/user/classroomTeacher/join',
+    CREATEATTENDANCE: '/api/user/attendance'
 };
 
 // Auth
@@ -139,7 +140,7 @@ const getStudentsByClassroom = async (payload) => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${payload.token}`, // teacher will send token //
         },
-        body: JSON.stringify({classroomId:payload.classroomId}),
+        body: JSON.stringify({ classroomId: payload.classroomId }),
     };
     return await fetch(BASEURL + ENDPOINT.LISTSTUDENT, opt);
 }
@@ -180,6 +181,18 @@ const joinClassroomTeacher = async (payload) => {
     return await fetch(BASEURL + ENDPOINT.JOINCLASSROOMTEACHER, opt);
 }
 
+const createAttendance = async (payload) => {
+    const opt = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${payload.token}`,
+        },
+        body: JSON.stringify(payload.attendance),// studentId,schoolId
+    };
+    return await fetch(BASEURL + ENDPOINT.CREATEATTENDANCE, opt);
+}
+
 export {
     register,
     login,
@@ -195,4 +208,5 @@ export {
     joinClassroom,//Student Join Classroom as soon as they are  Created by parent
     joinClassroomTeacher,
     getStudentsByClassroom,
+    createAttendance
 };
