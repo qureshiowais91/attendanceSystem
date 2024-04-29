@@ -1,16 +1,14 @@
 # Use node base image for building
-FROM node:20-buster
+FROM node:21-buster
 
 WORKDIR /app
 
 COPY package.json .
 
 
-
 RUN npm update
-RUN rm -rf package-lock.json
-RUN npm install vite@latest --save-dev
-RUN npm install  --force --legacy-peer-deps
+RUN npm install vite@latest --save-dev  
+RUN npm install  
 
 COPY . .
 
