@@ -111,7 +111,7 @@ function Register() {
             <MenuItem value='parent'>Parent</MenuItem>
             <MenuItem value='teacher'>Teacher</MenuItem>
             <MenuItem value='admin'>School Administrator</MenuItem>
-            <MenuItem value='student'>Create a Child Profile</MenuItem>
+            {/* <MenuItem value='student'>Create a Child Profile</MenuItem> */}
           </Select>
         </FormControl>
         <Button
