@@ -5,6 +5,9 @@ WORKDIR /app
 
 COPY package.json .
 
+RUN npm install -g npm@10.6.0
+
+
 RUN npm update
 RUN npm install vite@latest --save-dev
 RUN npm install 
