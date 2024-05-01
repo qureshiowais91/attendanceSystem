@@ -20,8 +20,7 @@ const AttendanceComponent = () => {
   const [students, setStudents] = useState([]);
   const token = useSelector((state) => state.auth.jwt);
   const [loading, setLoading] = useState(false);
-  const [hidden, setHidden] = useState(false);
-
+  const [classroomId, setClassroomId] = useState(false);
   const onClassSelect = async (classroomId) => {
     setLoading(true);
     const payload = { token, classroomId };
@@ -33,6 +32,7 @@ const AttendanceComponent = () => {
     }));
     setStudents(updatedStudents);
     setLoading(false);
+    setClassroomId(() => classroomId);
   };
 
   const handleToggleAttendance = (studentId) => {
@@ -54,21 +54,18 @@ const AttendanceComponent = () => {
       attendance: {
         absents: absentStudents.map((student) => student._id),
         presents: presentStudents.map((student) => student._id),
-        // Add other necessary fields such as date, time, schoolId
+        classroomId: classroomId,
       },
     };
     console.log(payload);
     try {
-      setTimeout(() => {
-        setHidden(false);
-      }, 1000 * 60 * 60 * 4);
+   
 
       const res = await createAttendance(payload);
       const attendance = await res.json();
       if (attendance) {
         console.log(attendance);
       }
-      setHidden(true);
     } catch (error) {
       console.log(error);
     }
@@ -113,7 +110,7 @@ const AttendanceComponent = () => {
             </Table>
           </TableContainer>
           <Button
-            style={{ display: hidden ? 'none' : 'block' }}
+           
             variant='contained'
             color='primary'
             onClick={handleSubmitAttendance}

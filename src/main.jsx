@@ -61,17 +61,6 @@ const router = createBrowserRouter(
       <Route path='/admin/' element={<AdminLayout />}>
       <Route path='/admin/profile' element={<Profile />} />
         <Route path='/admin/createclassroom' element={<CreateClassroomForm />} />
-         
-        {/* <Route
-          path='/admin/request'
-          element={
-            <PrivateRoute
-              element={<ViewMembershipRequestsComponent />}
-              allowedRoles={['admin']}
-            />
-          }
-          allowedRoles={['admin']}
-        /> */}
         <Route
           path='/admin/generateInviteCode'
           element={<GenerateInviteCode />}
