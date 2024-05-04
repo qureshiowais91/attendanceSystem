@@ -20,6 +20,7 @@ function Register() {
   const [errors, setErrors] = useState({
     email: '',
     password: '',
+    phonenumber: '',
     confirmpassword: '',
   });
 
@@ -27,13 +28,12 @@ function Register() {
     e.preventDefault();
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
-
     // Clear previous errors for the field when user starts typing
     setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
   };
 
   const handleRoleChange = (e) => {
-    setRole(e.target.value);
+    setRole(e.target.value);  
   };
 
   const validateForm = () => {
@@ -55,6 +55,10 @@ function Register() {
       valid = false;
     }
 
+    if(user.phonenumber){
+      console.log(user.phonenumber);
+    }
+
     setErrors(newErrors);
     return valid;
   };
@@ -70,7 +74,9 @@ function Register() {
       email: user.email,
       password: user.password,
       role: role,
+      phonenumber:user.phonenumber
     };
+    console.log(payload)
     const res = await register(payload);
     const loggedin = await res.json();
     console.log(loggedin);
@@ -96,7 +102,7 @@ function Register() {
     } else {
       navigate('/login');
     }
-  };  
+  };
 
   return (
     <div>
@@ -111,6 +117,16 @@ function Register() {
           name='email'
           error={Boolean(errors.email)}
           helperText={errors.email}
+        />
+        <TextField
+          label='Phone Number'
+          onChange={handleInputChange}
+          variant='outlined'
+          fullWidth
+          margin='normal'
+          name='phonenumber'
+          error={Boolean(errors.phonenumber)}
+          helperText={errors.phonenumber}
         />
         <TextField
           label='Password'
