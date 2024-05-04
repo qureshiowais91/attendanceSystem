@@ -7,16 +7,13 @@ import Register from './pages/auth/register';
 import Login from './pages/auth/login';
 import ResetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
-// import Dashboard from './pages/Dashboard/Dashboard';
 import OTPValidation from './pages/auth/otpvalidation';
 import Profile from './pages/Profile/profile';
 
-// import ProtectedLayout from './components/Layout/AdminLayout';
 
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
 
-// import ProtectedRoute from './components/protectRoute';
 
 import './index.css';
 
@@ -26,7 +23,6 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
-// import ViewMembershipRequestsComponent from './components/UI/Request/viewRequests';
 import AdminLayout from './components/Layout/AdminLayout';
 import ParentLayout from './components/Layout/ParentLayout';
 import TeacherLayout from './components/Layout/TeacherLayout';
@@ -37,16 +33,6 @@ import StudentDetailsForm from './pages/Dashboard/Parent/AddStudent/AddStudent';
 import CreateClassroomForm from './pages/Dashboard/Admin/CreateClassroom/CreateClassroom';
 import ListClassrooms  from './pages/Dashboard/Teacher/Join-Classroom/joinClassroom'
 import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance';
-// import Scanner from './components/Scanner/Scanner';
-
-// eslint-disable-next-line react-refresh/only-export-components
-// const PrivateRoute = ({ element, allowedRoles }) => {
-//   // Replace this with your actual authentication logic
-//   const userRole = 'admin'; // Example: 'admin', 'teacher', or 'parent'
-//   const isAuthorized = allowedRoles.includes(userRole);
-
-//   return isAuthorized ? element : <Navigate to='/unauthorized' replace />;
-// };
 
 const router = createBrowserRouter(
   createRoutesFromElements(

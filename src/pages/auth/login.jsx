@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { login } from '../../API/APIs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userLogin } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,9 +11,9 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const role = useSelector((state) => {
-    return state.auth;
-  });
+  // const role = useSelector((state) => {
+  //   return state.auth;
+  // });
 
   const handleChange = (e) => {
     const { name, value } = e.target;

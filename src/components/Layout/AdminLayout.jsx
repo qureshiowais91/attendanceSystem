@@ -58,26 +58,12 @@ function AdminLayout() {
             <ListItem component={Link} to='/admin/profile'>
               <ListItemText primary='Profile' />
             </ListItem>
-            {/* remove */}
-            {/* <ListItem component={Link} to='/admin/createNewSchool'>
-              <ListItemText primary='Add New School' />
-            </ListItem> */}
-            {/* <ListItem component={Link} to='/admin/request'>
-              <ListItemText primary='Join Request ' />
-            </ListItem> */}
-           {/* remove  */}
-            <ListItem component={Link} to='/admin/generateInviteCode'>
+               <ListItem component={Link} to='/admin/generateInviteCode'>
               <ListItemText primary='Generate Invite Code' />
             </ListItem>
             <ListItem component={Link} to='/admin/createclassroom'>
               <ListItemText primary='Create Classroom' />
             </ListItem>
-
-            {/* list classroom and allow Update and Delete 
-            <ListItem component={Link} to='/admin/classroom'>
-              <ListItemText primary='List All Classroom' />
-            </ListItem> */}
-
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
               <ThemeToggleButton

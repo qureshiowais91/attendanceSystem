@@ -59,8 +59,6 @@ const AttendanceComponent = () => {
     };
     // console.log(payload);
     try {
-   
-
       const res = await createAttendance(payload);
       const attendance = await res.json();
       if (attendance) {
