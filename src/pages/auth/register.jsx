@@ -45,10 +45,10 @@ function Register() {
       };
       const res = await register(payload);
       const loggedin = await res.json();
-      // console.log(loggedin);
+      console.log(loggedin);
       // console.log(role);
 
-       dispatch(
+      dispatch(
         userLogin({
           isAuth: loggedin.isAuth,
           jwt: loggedin.token,
@@ -57,7 +57,9 @@ function Register() {
       );
 
       if (loggedin.isAuth) {
-        if (loggedin.role == 'admin') {
+        if (!loggedin.verified) {
+          navigate('/contact/developer');
+        } else if (loggedin.role == 'admin') {
           navigate('/admin/createNewSchool');
         } else if (loggedin.role == 'parent') {
           navigate('/parent/profile');
