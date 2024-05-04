@@ -7,7 +7,7 @@ function OTPValidation() {
   const [error, setError] = useState('');
 
   const email = useSelector((state) => state.otp.email);
-  console.log(email,"redux");
+  // console.log(email,"redux");
   const inputHandler = (e) => {
     setOTP(e.target.value);
   };

@@ -37,12 +37,12 @@ const ViewMembershipRequestsComponent = () => {
 
   const handleAccept = (requestId, requestType) => {
     // Dummy function to handle request acceptance
-    console.log(`Request ${requestId} (${requestType}) accepted.`);
+    // console.log(`Request ${requestId} (${requestType}) accepted.`);
   };
 
   const handleDecline = (requestId, requestType) => {
     // Dummy function to handle request decline
-    console.log(`Request ${requestId} (${requestType}) declined.`);
+    // console.log(`Request ${requestId} (${requestType}) declined.`);
   };
 
   return (

@@ -106,7 +106,7 @@ const ListClassrooms = () => {
 
   const handleSubmit = async () => {
     try {
-      console.log(selectedId);
+      // console.log(selectedId);
       // You can perform further actions here with the selectedId
         if(!selectedId){
             throw new Error("Select Classroom to Join")

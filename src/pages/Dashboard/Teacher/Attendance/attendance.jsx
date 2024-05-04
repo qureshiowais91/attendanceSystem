@@ -57,17 +57,17 @@ const AttendanceComponent = () => {
         classroomId: classroomId,
       },
     };
-    console.log(payload);
+    // console.log(payload);
     try {
    
 
       const res = await createAttendance(payload);
       const attendance = await res.json();
       if (attendance) {
-        console.log(attendance);
+        // console.log(attendance);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

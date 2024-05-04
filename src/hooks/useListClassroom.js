@@ -8,7 +8,7 @@ const useClassList = () => {
 
   // Access token from Redux state
   useEffect(() => {
-    console.log(token)
+    // console.log(token)
 
     const fetchData = async () => {
       try {

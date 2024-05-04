@@ -30,8 +30,8 @@ function Login() {
       };
       const res = await login(payload);
       const loggedin = await res.json();
-      console.log(loggedin);
-      console.log(role);
+      // console.log(loggedin);
+      // console.log(role);
 
       alert(loggedin.message);
       dispatch(

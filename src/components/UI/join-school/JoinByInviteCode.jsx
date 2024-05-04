@@ -28,7 +28,7 @@ const JoinByInviteCode = () => {
       if (isValidCode) {
         const joinData = await joinbyInviteCode(payload);
         const schoolUser = joinData.json();
-        console.log(schoolUser);
+        // console.log(schoolUser);
       }
       alert(`Joining with invite code: ${inviteCode}`);
       // Add your join logic here

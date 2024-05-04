@@ -32,7 +32,7 @@ const StudentDetailsForm = () => {
       // Create new Student
       const res = await addStudent(payload);
       const isDone = await res.json();
-      console.log(isDone);
+      // console.log(isDone);
       setTimeout(async () => {
         (async () => {
           if (isDone.message === 'Student added successfully') {
@@ -45,18 +45,18 @@ const StudentDetailsForm = () => {
               token: token,
             };
 
-            console.log(joinPayload);
+            // console.log(joinPayload);
 
             const joined = await joinClassroom(payload);
             const data = await joined.json();
-            console.log(data);
+            // console.log(data);
             alert('Student added successfully');
           }
         })();
       }, 1000);
 
       // Add Student to Classroom
-      console.log(student.classRoom);
+      // console.log(student.classRoom);
     } catch (error) {
       alert(error);
     }

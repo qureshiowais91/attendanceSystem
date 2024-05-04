@@ -45,8 +45,8 @@ function Register() {
       };
       const res = await register(payload);
       const loggedin = await res.json();
-      console.log(loggedin);
-      console.log(role);
+      // console.log(loggedin);
+      // console.log(role);
 
        dispatch(
         userLogin({
