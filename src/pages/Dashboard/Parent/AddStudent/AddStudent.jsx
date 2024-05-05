@@ -48,7 +48,7 @@ const StudentDetailsForm = () => {
             // console.log(joinPayload);
 
             const joined = await joinClassroom(payload);
-            const data = await joined.json();
+            await joined.json();
             // console.log(data);
             alert('Student added successfully');
           }
@@ -119,22 +119,28 @@ const StudentDetailsForm = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              fullWidth
-              select
-              label='Classroom'
-              name='classRoom'
-              value={student.classRoom}
-              onChange={handleChange}
-              SelectProps={{ native: true }}
-            >
-              <option value=''></option>
-              {classrooms.map((classroom) => (
-                <option key={classroom._id} value={classroom._id}>
-                  {classroom.classroom}
-                </option>
-              ))}
-            </TextField>
+            {classrooms.length === 0 ? (
+              <Typography variant='body1'>
+                Did not join a school? Contact school admin to add classrooms.
+              </Typography>
+            ) : (
+              <TextField
+                fullWidth
+                select
+                label='Classroom'
+                name='classRoom'
+                value={student.classRoom}
+                onChange={handleChange}
+                SelectProps={{ native: true }}
+              >
+                <option value=''></option>
+                {classrooms?.map((classroom) => (
+                  <option key={classroom._id} value={classroom._id}>
+                    {classroom.classroom}
+                  </option>
+                ))}
+              </TextField>
+            )}
           </Grid>
           <Grid item xs={12}>
             <Button variant='contained' color='primary' type='submit'>
