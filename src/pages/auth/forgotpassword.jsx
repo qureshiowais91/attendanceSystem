@@ -5,7 +5,7 @@ import { otp } from '../../features/one_time_password/one_time_password';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
-function ResetPassword() {
+function ForgetPassword() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -49,4 +49,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default ForgetPassword;

@@ -5,15 +5,13 @@ import ReactDOM from 'react-dom/client';
 import Layout from './components/Layout';
 import Register from './pages/auth/register';
 import Login from './pages/auth/login';
-import ResetPassword from './pages/auth/forgotpassword';
+import ForgetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import OTPValidation from './pages/auth/otpvalidation';
 import Profile from './pages/Profile/profile';
 
-
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
-
 
 import './index.css';
 
@@ -31,8 +29,9 @@ import GenerateInviteCode from './pages/Dashboard/Admin/generateInviteCode';
 import CreateSchool from './pages/Dashboard/Admin/CreateSchool/CreateSchool';
 import StudentDetailsForm from './pages/Dashboard/Parent/AddStudent/AddStudent';
 import CreateClassroomForm from './pages/Dashboard/Admin/CreateClassroom/CreateClassroom';
-import ListClassrooms  from './pages/Dashboard/Teacher/Join-Classroom/joinClassroom'
+import ListClassrooms from './pages/Dashboard/Teacher/Join-Classroom/joinClassroom';
 import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance';
+import ResetPassword from './pages/auth/resetpassword';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,12 +40,16 @@ const router = createBrowserRouter(
         <Route path='/' element={<LandingPage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/forgotpassword' element={<ResetPassword />} />
+        <Route path='/forgotpassword' element={<ForgetPassword />} />
         <Route path='/validateOtp' element={<OTPValidation />} />
+        <Route path='/resetpassword' element={<ResetPassword />} />
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
-      <Route path='/admin/profile' element={<Profile />} />
-        <Route path='/admin/createclassroom' element={<CreateClassroomForm />} />
+        <Route path='/admin/profile' element={<Profile />} />
+        <Route
+          path='/admin/createclassroom'
+          element={<CreateClassroomForm />}
+        />
         <Route
           path='/admin/generateInviteCode'
           element={<GenerateInviteCode />}
@@ -61,8 +64,8 @@ const router = createBrowserRouter(
       <Route path='/teacher/' element={<TeacherLayout />}>
         <Route path='/teacher/profile' element={<Profile />} />
         <Route path='/teacher/join-school' element={<JoinByInviteCode />} />
-        <Route path='/teacher/join-classroom' element={<ListClassrooms/>} />
-        <Route path='/teacher/attendance' element={<AttendanceComponent/>}/>
+        <Route path='/teacher/join-classroom' element={<ListClassrooms />} />
+        <Route path='/teacher/attendance' element={<AttendanceComponent />} />
       </Route>
     </React.Fragment>
   )

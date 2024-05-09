@@ -45,8 +45,6 @@ const StudentDetailsForm = () => {
               token: token,
             };
 
-            // console.log(joinPayload);
-
             const joined = await joinClassroom(payload);
             await joined.json();
             // console.log(data);

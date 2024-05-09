@@ -100,7 +100,7 @@ function Register() {
         navigate('/teacher/profile');
       }
     } else {
-      navigate('/login');
+      navigate('/register');
     }
   };
 
