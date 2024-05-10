@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { joinbyInviteCode } from '../../../API/APIs';
 import { useSelector } from 'react-redux';
+import { CircularProgress, Alert } from '@mui/material';
 
 const JoinByInviteCode = () => {
   const [inviteCode, setInviteCode] = useState('');
   const [isValidCode, setIsValidCode] = useState(false);
+  const [Loading, setLoading] = useState();
+  const [res, setRes] = useState();
   const token = useSelector((state) => {
     return state.auth.jwt;
   });
@@ -23,34 +26,40 @@ const JoinByInviteCode = () => {
   };
 
   const handleJoin = async () => {
-    // Example: Process joining with the invite code
-    if (isValidCode) {
+    try {
+      setLoading(true);
       if (isValidCode) {
         const joinData = await joinbyInviteCode(payload);
-        const schoolUser = joinData.json();
-        // console.log(schoolUser);
+        const schoolUser = await joinData.json();
+        if (schoolUser?.inviteCode === inviteCode) {
+          setRes('Joined A School SuccessFully');
+        }
+        // Add your join logic here
+      } else {
+        alert('Please enter a valid invite code.');
       }
-      alert(`Joining with invite code: ${inviteCode}`);
-      // Add your join logic here
-    } else {
-      alert('Please enter a valid invite code.');
+    } catch (error) {
+      alert(error);
+    } finally {
+      // Add any cleanup logic here if needed
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <h1>Join by Invite Code</h1>
+      {res && <Alert severity='success'>{res}</Alert>}
       <input
         type='text'
         placeholder='Enter invite code...'
         value={inviteCode}
         onChange={handleInviteCodeInput}
       />
-      <button onClick={handleJoin}>Join</button>
-      {isValidCode ? (
-        <p>Valid invite code entered: {inviteCode}</p>
+      {Loading ? (
+        <CircularProgress size={24} />
       ) : (
-        <p>Please enter a valid invite code.</p>
+        <button onClick={handleJoin}>Join</button>
       )}
     </div>
   );
