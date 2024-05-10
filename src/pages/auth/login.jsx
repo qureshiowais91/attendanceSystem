@@ -15,7 +15,7 @@ function Login() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
-    setError(''); // Clear any previous error message when user starts typing
+    setError('');
   };
 
   const handleLogin = async (e) => {
@@ -28,8 +28,6 @@ function Login() {
       };
       const res = await login(payload);
       const loggedin = await res.json();
-      // console.log(loggedin);
-      // console.log(role);
 
       alert(loggedin.message);
       dispatch(

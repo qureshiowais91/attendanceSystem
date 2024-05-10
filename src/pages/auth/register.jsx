@@ -6,6 +6,7 @@ import {
   Select,
   MenuItem,
   CircularProgress,
+  Alert,
 } from '@mui/material';
 import { useState } from 'react';
 import { register } from '../../API/APIs';
@@ -18,6 +19,7 @@ function Register() {
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
   const [role, setRole] = useState('parent');
+  const [resError, setResError] = useState();
   const [errors, setErrors] = useState({
     email: '',
     password: '',
@@ -82,7 +84,10 @@ function Register() {
     try {
       const res = await register(payload);
       const loggedin = await res.json();
-      console.log(loggedin);
+      console.log('test', loggedin);
+      if (loggedin['error']) {
+        setResError(loggedin['error']);
+      }
 
       dispatch(
         userLogin({
@@ -115,7 +120,7 @@ function Register() {
   return (
     <div>
       <img width='200px' height='200px' src='/register_1.svg' alt='Register' />
-
+      {resError && <Alert severity='error'>{resError}</Alert>}
       <form>
         <TextField
           label='Email'
