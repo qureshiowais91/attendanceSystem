@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField, Button, CircularProgress } from '@mui/material';
+import { TextField, Button, CircularProgress, Alert } from '@mui/material';
 import { login } from '../../API/APIs';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../features/auth/authSlice';
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
+  const [resError, setResError] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -28,8 +29,14 @@ function Login() {
       };
       const res = await login(payload);
       const loggedin = await res.json();
-
-      alert(loggedin.message);
+      console.log(loggedin['error']);
+      if (loggedin['error']) {
+        setResError(
+          loggedin['error'] +
+            ' Please email projectalphainfotech@gmail.com to request manual verification.'
+        );
+      }
+      // alert(loggedin['error']);
       dispatch(
         userLogin({
           isAuth: loggedin.isAuth,
@@ -55,12 +62,15 @@ function Login() {
       // console.log({ isAuth: true, jwt: loggedin.token });
     } catch (error) {
       setError('Try Again');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <img width='200px' height='200px' src='/login_1.svg'></img>
+      {resError && <Alert severity='error'>{resError}</Alert>}
       <form onSubmit={handleLogin}>
         <TextField
           name='email'
