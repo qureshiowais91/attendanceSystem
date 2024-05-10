@@ -96,9 +96,10 @@ function Register() {
           role: loggedin.role,
         })
       );
-
+    
       if (loggedin.isAuth) {
-        if (!loggedin.verified && !user.email.includes('@gmail.com')) {
+        // for testing only 
+        if (loggedin.verified && user.email.includes('@gmail.com')) {
           alert('Invalid Email');
         } else if (loggedin.role === 'admin') {
           navigate('/admin/createNewSchool');
