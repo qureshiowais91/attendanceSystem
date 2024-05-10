@@ -5,9 +5,10 @@ import { CircularProgress, Alert } from '@mui/material';
 
 const JoinByInviteCode = () => {
   const [inviteCode, setInviteCode] = useState('');
-  const [isValidCode, setIsValidCode] = useState(false);
+
   const [Loading, setLoading] = useState();
   const [res, setRes] = useState();
+  const [error, setError] = useState();
   const token = useSelector((state) => {
     return state.auth.jwt;
   });
@@ -19,27 +20,26 @@ const JoinByInviteCode = () => {
   const handleInviteCodeInput = async (e) => {
     const value = e.target.value;
     setInviteCode(value);
-
-    // Example: Validate the invite code (replace with your validation logic)
-    const isValid = value.trim() !== ''; // Validate if the code is not empty
-    setIsValidCode(isValid);
   };
 
   const handleJoin = async () => {
     try {
       setLoading(true);
-      if (isValidCode) {
-        const joinData = await joinbyInviteCode(payload);
-        const schoolUser = await joinData.json();
-        if (schoolUser?.inviteCode === inviteCode) {
-          setRes('Joined A School SuccessFully');
-        }
-        // Add your join logic here
+
+      const joinData = await joinbyInviteCode(payload);
+      const schoolUser = await joinData.json();
+      console.log(schoolUser);
+      if (schoolUser?.inviteCode === inviteCode) {
+        setRes('Joined A School SuccessFully');
+        setError(false);
       } else {
-        alert('Please enter a valid invite code.');
+        setError(schoolUser['error']);
+        setRes(false);
       }
     } catch (error) {
-      alert(error);
+      console.log(error);
+      setRes(error);
+      setLoading(false);
     } finally {
       // Add any cleanup logic here if needed
       setLoading(false);
@@ -50,6 +50,7 @@ const JoinByInviteCode = () => {
     <div>
       <h1>Join by Invite Code</h1>
       {res && <Alert severity='success'>{res}</Alert>}
+      {error && <Alert severity='warning'>{error}</Alert>}
       <input
         type='text'
         placeholder='Enter invite code...'
