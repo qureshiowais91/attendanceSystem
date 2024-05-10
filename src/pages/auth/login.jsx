@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, CircularProgress } from '@mui/material';
 import { login } from '../../API/APIs';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../features/auth/authSlice';
@@ -10,10 +10,7 @@ function Login() {
   const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const role = useSelector((state) => {
-  //   return state.auth;
-  // });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,6 +21,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const payload = {
         email: user.email,
         password: user.password,
@@ -42,12 +40,16 @@ function Login() {
         })
       );
       if (loggedin.isAuth) {
-        if (loggedin.role == 'admin') {
-          navigate('/admin/profile');
-        } else if (loggedin.role == 'parent') {
-          navigate('/parent/profile');
-        } else if (loggedin.role == 'teacher') {
-          navigate('/teacher/profile');
+        switch (loggedin.role) {
+          case 'admin':
+            navigate('/admin/profile');
+            break;
+          case 'parent':
+            navigate('/parent/profile');
+            break;
+          case 'teacher':
+            navigate('/teacher/profile');
+            break;
         }
       } else {
         navigate('/login');
@@ -80,16 +82,20 @@ function Login() {
           margin='normal'
         />
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <Button
-          type='submit'
-          variant='contained'
-          color='primary'
-          fullWidth
-          size='large'
-          sx={{ mt: 2 }}
-        >
-          Login
-        </Button>
+        {loading ? (
+          <CircularProgress size={24} />
+        ) : (
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            fullWidth
+            size='large'
+            sx={{ mt: 2 }}
+          >
+            Login
+          </Button>
+        )}
       </form>
     </div>
   );

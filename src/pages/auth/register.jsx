@@ -5,6 +5,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  CircularProgress,
 } from '@mui/material';
 import { useState } from 'react';
 import { register } from '../../API/APIs';
@@ -23,7 +24,7 @@ function Register() {
     phonenumber: '',
     confirmpassword: '',
   });
-
+  const [loading, setLoading] = useState(false); // Added state for loading indicator
   const handleInputChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -33,7 +34,7 @@ function Register() {
   };
 
   const handleRoleChange = (e) => {
-    setRole(e.target.value);  
+    setRole(e.target.value);
   };
 
   const validateForm = () => {
@@ -55,7 +56,7 @@ function Register() {
       valid = false;
     }
 
-    if(user.phonenumber){
+    if (user.phonenumber) {
       console.log(user.phonenumber);
     }
 
@@ -66,47 +67,55 @@ function Register() {
   const registerHandler = async (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      return; // Prevent registration if form is not valid
+      return;
     }
 
-    // Proceed with registration logic
+    setLoading(true); // Show loader when submitting
+
     const payload = {
       email: user.email,
       password: user.password,
       role: role,
-      phonenumber:user.phonenumber
+      phonenumber: user.phonenumber,
     };
-    console.log(payload)
-    const res = await register(payload);
-    const loggedin = await res.json();
-    console.log(loggedin);
 
-    dispatch(
-      userLogin({
-        isAuth: loggedin.isAuth,
-        jwt: loggedin.token,
-        role: loggedin.role,
-      })
-    );
+    try {
+      const res = await register(payload);
+      const loggedin = await res.json();
+      console.log(loggedin);
 
-    if (loggedin.isAuth) {
-      if (!loggedin.verified && !user.email.includes('@gmail.com')) {
-        alert('Invalid Email');
-      } else if (loggedin.role === 'admin') {
-        navigate('/admin/createNewSchool');
-      } else if (loggedin.role === 'parent') {
-        navigate('/parent/profile');
-      } else if (loggedin.role === 'teacher') {
-        navigate('/teacher/profile');
+      dispatch(
+        userLogin({
+          isAuth: loggedin.isAuth,
+          jwt: loggedin.token,
+          role: loggedin.role,
+        })
+      );
+
+      if (loggedin.isAuth) {
+        if (!loggedin.verified && !user.email.includes('@gmail.com')) {
+          alert('Invalid Email');
+        } else if (loggedin.role === 'admin') {
+          navigate('/admin/createNewSchool');
+        } else if (loggedin.role === 'parent') {
+          navigate('/parent/profile');
+        } else if (loggedin.role === 'teacher') {
+          navigate('/teacher/profile');
+        }
+      } else {
+        navigate('/register');
       }
-    } else {
-      navigate('/register');
+    } catch (error) {
+      console.error('Error registering:', error);
+    } finally {
+      setLoading(false); // Hide loader after request completion
     }
   };
 
   return (
     <div>
       <img width='200px' height='200px' src='/register_1.svg' alt='Register' />
+
       <form>
         <TextField
           label='Email'
@@ -163,17 +172,22 @@ function Register() {
             <MenuItem value='admin'>School Administrator</MenuItem>
           </Select>
         </FormControl>
-        <Button
-          type='submit'
-          variant='contained'
-          color='primary'
-          fullWidth
-          size='large'
-          onClick={registerHandler}
-          sx={{ mt: 2 }}
-        >
-          Register
-        </Button>
+
+        {loading ? (
+          <CircularProgress size={24} />
+        ) : (
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            fullWidth
+            size='large'
+            onClick={registerHandler}
+            sx={{ mt: 2 }}
+          >
+            Register
+          </Button>
+        )}
       </form>
     </div>
   );
