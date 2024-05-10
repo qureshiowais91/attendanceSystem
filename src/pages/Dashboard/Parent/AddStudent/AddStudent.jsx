@@ -88,12 +88,15 @@ const StudentDetailsForm = () => {
         console.log(list);
         if (list === 'schoolId is Missing') {
           setError('You Must First Join A School');
+        } else if (list.length == 0) {
+          setError(
+            `It's Seem Like School Admin Did  Not Created Any Classroom.`
+          );
         }
       } catch (error) {
         console.error('Error fetching classrooms:', error);
       }
     };
-
     fetchData();
   }, [token]);
 
@@ -143,7 +146,6 @@ const StudentDetailsForm = () => {
                   onChange={handleChange}
                   SelectProps={{ native: true }}
                 >
-                  <option value=''></option>
                   {classrooms?.map((classroom) => (
                     <option key={classroom._id} value={classroom._id}>
                       {classroom.classroom}
