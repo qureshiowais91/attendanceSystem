@@ -29,7 +29,8 @@ function Login() {
       };
       const res = await login(payload);
       const loggedin = await res.json();
-      console.log(loggedin['error']);
+      // console.log(loggedin['error']);
+      // console.log(loggedin)
       if (loggedin['error']) {
         setResError(
           loggedin['error'] +
@@ -42,6 +43,7 @@ function Login() {
           isAuth: loggedin.isAuth,
           jwt: loggedin.token,
           role: loggedin.role,
+          id: loggedin._id,
         })
       );
       if (loggedin.isAuth) {

@@ -4,6 +4,7 @@ const initialState = {
   isAuth: false,
   role: false,
   jwt: false,
+  id: false,
 };
 
 export const authSlice = createSlice({
@@ -14,6 +15,7 @@ export const authSlice = createSlice({
       state.isAuth = action.payload.isAuth;
       state.role = action.payload.role;
       state.jwt = action.payload.jwt;
+      state.id = action.payload.id;
     },
   },
 });

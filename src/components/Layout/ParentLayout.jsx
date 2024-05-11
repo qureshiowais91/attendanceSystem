@@ -63,11 +63,9 @@ function ParentLayout() {
               <ListItemText primary='Create Student Profile' />
             </ListItem>
 
-           {/* list Student and allow Update and Delete 
-            <ListItem component={Link} to='/parent/student'>
-              <ListItemText primary='List All Student' />
-            </ListItem> */}
-
+            <ListItem component={Link} to='/parent/mychild'>
+               <ListItemText primary='List All Profile' />
+            </ListItem> 
             <ListItem component={Link} to='/parent/join-school'>
               <ListItemText primary='Join School' />
             </ListItem>

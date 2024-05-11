@@ -9,6 +9,7 @@ import ForgetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import OTPValidation from './pages/auth/otpvalidation';
 import Profile from './pages/Profile/profile';
+import {ListStudents} from './pages/Dashboard/Parent/ListStudent/ListStudents';
 
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
@@ -62,6 +63,7 @@ const router = createBrowserRouter(
         <Route path='/parent/profile' element={<Profile />} />
         <Route path='/parent/join-school' element={<JoinByInviteCode />} />
         <Route path='/parent/addmychild' element={<StudentDetailsForm />} />
+        <Route path='/parent/mychild' element={<ListStudents/>} />
       </Route>
       <Route path='/teacher/' element={<TeacherLayout />}>
         <Route path='/teacher/profile' element={<Profile />} />

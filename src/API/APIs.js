@@ -12,10 +12,11 @@ const ENDPOINT = {
   ADDSTUDENT: '/api/student',
   GETCLASSROOMS: '/api/user/classrooms',
   JOINCLASSROOM: '/api/user/classroom/join',
-  LISTSTUDENT: '/api/user/classroom/students', //list student by classroomId // any teacher who is join to that same school could list and take attendance
+  LISTSTUDENT: '/api/user/classroom/students', // depricated by LISTSTUDENTS //list student by classroomId // any teacher who is join to that same school could list and take attendance
   JOINCLASSROOMTEACHER: '/api/user/classroomTeacher/join',
   CREATEATTENDANCE: '/api/user/attendance',
   RESETPASSWORD: '/api/reset',
+  LISTSTUDENTS: '/api/user/students',
 };
 
 // Auth
@@ -210,6 +211,17 @@ const resetpassword = async (payload) => {
   return await fetch(BASEURL + ENDPOINT.RESETPASSWORD, opt);
 };
 
+const students = async (payload) => {
+  const opt = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${payload.token}`,
+    },
+  };
+  return await fetch(BASEURL + ENDPOINT.LISTSTUDENTS + payload.query, opt);
+};
+
 export {
   register,
   login,
@@ -227,4 +239,5 @@ export {
   getStudentsByClassroom,
   createAttendance,
   resetpassword,
+  students,
 };
