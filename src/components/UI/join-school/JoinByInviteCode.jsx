@@ -5,7 +5,6 @@ import { CircularProgress, Alert } from '@mui/material';
 
 const JoinByInviteCode = () => {
   const [inviteCode, setInviteCode] = useState('');
-
   const [Loading, setLoading] = useState();
   const [res, setRes] = useState();
   const [error, setError] = useState();
@@ -17,6 +16,7 @@ const JoinByInviteCode = () => {
     token: token,
     inviteCode: inviteCode,
   };
+
   const handleInviteCodeInput = async (e) => {
     const value = e.target.value;
     setInviteCode(value);
@@ -25,7 +25,6 @@ const JoinByInviteCode = () => {
   const handleJoin = async () => {
     try {
       setLoading(true);
-
       const joinData = await joinbyInviteCode(payload);
       const schoolUser = await joinData.json();
       console.log(schoolUser);
@@ -41,7 +40,6 @@ const JoinByInviteCode = () => {
       setRes(error);
       setLoading(false);
     } finally {
-      // Add any cleanup logic here if needed
       setLoading(false);
     }
   };
