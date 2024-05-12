@@ -44,7 +44,7 @@ const TeacherProfile = () => {
   return (
     <>
       <Typography variant='h5' gutterBottom>
-        Parent Profile
+        Teacher Profile
       </Typography>
       <Card style={cardStyle}>
         <CardContent>
