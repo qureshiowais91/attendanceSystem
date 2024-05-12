@@ -96,12 +96,11 @@ function Register() {
           role: loggedin.role,
         })
       );
-    
+
       if (loggedin.isAuth) {
-        // for testing only 
-        if (loggedin.verified && user.email.includes('@gmail.com')) {
-          alert('Invalid Email');
-        } else if (loggedin.role === 'admin') {
+        // for testing only
+        // if (loggedin.verified && user.email.includes('@gmail.com'))
+        if (loggedin.role === 'admin') {
           navigate('/admin/createNewSchool');
         } else if (loggedin.role === 'parent') {
           navigate('/parent/profile');
