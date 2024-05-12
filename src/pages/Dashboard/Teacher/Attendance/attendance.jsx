@@ -23,19 +23,23 @@ const AttendanceComponent = () => {
   const [classroomId, setClassroomId] = useState(false);
   // const [error, setError] = useState();
 
-
-
   const onClassSelect = async (classroomId) => {
-    const payload = { token, classroomId };
-    const res = await getStudentsByClassroom(payload);
-    const studentList = await res.json();
-    studentList.students.map((student) => ({
-      ...student,
-      absent: false, // Assuming initial attendance is set to false (not absent)
-    }));
-    setClassroomId(() => classroomId);
+    setLoading(true);
+    try {
+      const payload = { token, classroomId };
+      const res = await getStudentsByClassroom(payload);
+      const studentList = await res.json();
+      studentList.students.map((student) => ({
+        ...student,
+        absent: false, // Assuming initial attendance is set to false (not absent)
+      }));
+      setClassroomId(() => classroomId);
+      setStudents(studentList.students);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
 
   const handleToggleAttendance = (studentId) => {
     setStudents((prevStudents) =>
