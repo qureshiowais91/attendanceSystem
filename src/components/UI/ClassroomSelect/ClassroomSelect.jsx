@@ -54,12 +54,13 @@ const ClassSelector = ({ onClassSelect }) => {
     const { value } = event.target;
     setSelectedClass(() => value);
     onClassSelect(value);
+    console.log(value)
   };
 
   return (
     <Box p={2}>
       <Typography variant='h5' mb={2}>
-        Mark Attendance
+        Select Classroom
         {error && <Alert severity='error'>{error}</Alert>}
       </Typography>
       <FormControl fullWidth sx={{ marginBottom: 2 }}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   TextField,
   Button,
@@ -7,22 +7,22 @@ import {
   Container,
   CircularProgress,
 } from '@mui/material';
-import { addStudent, listClassroom, joinClassroom } from '../../../../API/APIs';
+import { addStudent, joinClassroom } from '../../../../API/APIs';
 import { useSelector } from 'react-redux';
+import ClassSelector from '../../../../components/UI/ClassroomSelect/ClassroomSelect';
 
 const StudentDetailsForm = () => {
   const token = useSelector((state) => state.auth.jwt);
   const [error, setError] = useState();
-  const [classrooms, setClassrooms] = useState([]);
   const [loading, setLoading] = useState();
-
   const [student, setStudent] = useState({
     name: '',
     birthdate: '',
-    classRoom: '',
   });
+  const [classroomId, setClassroomId] = useState();
 
   const handleChange = (e) => {
+    console.log(student);
     const { name, value } = e.target;
     setStudent((prevStudent) => ({
       ...prevStudent,
@@ -48,7 +48,7 @@ const StudentDetailsForm = () => {
       if (isDone.message === 'Student added successfully') {
         const joinPayload = {
           studentId: isDone.newStudent._id,
-          classroomId: student.classRoom,
+          classroomId: classroomId,
         };
         const payload = {
           joinPayload: joinPayload,
@@ -68,38 +68,10 @@ const StudentDetailsForm = () => {
       setStudent({
         name: '',
         birthdate: '',
-        classRoom: '',
       });
     }
     // Reset form fields after submission
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const payload = {
-          token: token,
-        };
-
-        const res = await listClassroom(payload);
-        const list = await res.json();
-
-        setClassrooms(list);
-        console.log(list);
-        if (list === 'schoolId is Missing') {
-          setError('You Must First Join A School');
-        } else if (list.length == 0) {
-          setError(
-            `It's Seem Like School Admin Did  Not Created Any Classroom.`
-          );
-        }
-      } catch (error) {
-        console.error('Error fetching classrooms:', error);
-      }
-    };
-    fetchData();
-  }, [token]);
-
   return (
     <Container maxWidth='sm'>
       {error ? (
@@ -137,21 +109,7 @@ const StudentDetailsForm = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  select
-                  label='Classroom'
-                  name='classRoom'
-                  value={student.classRoom}
-                  onChange={handleChange}
-                  SelectProps={{ native: true }}
-                >
-                  {classrooms?.map((classroom) => (
-                    <option key={classroom._id} value={classroom._id}>
-                      {classroom.classroom}
-                    </option>
-                  ))}
-                </TextField>
+                <ClassSelector onClassSelect={setClassroomId}></ClassSelector>
               </Grid>
               <Grid item xs={12}>
                 {loading ? (
