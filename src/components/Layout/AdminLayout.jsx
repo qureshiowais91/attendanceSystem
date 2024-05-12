@@ -55,9 +55,9 @@ function AdminLayout() {
           }}
         >
           <List>
-            <ListItem component={Link} to='/admin/profile'>
+             <ListItem component={Link} to='/admin/profile'>
               <ListItemText primary='Profile' />
-            </ListItem>
+            </ListItem> 
                <ListItem component={Link} to='/admin/generateInviteCode'>
               <ListItemText primary='Generate Invite Code' />
             </ListItem>

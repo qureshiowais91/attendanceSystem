@@ -41,7 +41,7 @@
 //         },
 //         token:token
 //     }
-//     await joinClassroomTeacher(payload); 
+//     await joinClassroomTeacher(payload);
 //   };
 
 //   return (
@@ -71,7 +71,15 @@
 
 // export default ListClassrooms;
 import { useState, useEffect } from 'react';
-import { Select, MenuItem, Typography, Container, Button } from '@mui/material';
+import {
+  Select,
+  MenuItem,
+  Typography,
+  Container,
+  Button,
+  CircularProgress,
+  Alert,
+} from '@mui/material';
 import { listClassroom, joinClassroomTeacher } from '../../../../API/APIs';
 import { useSelector } from 'react-redux';
 
@@ -80,8 +88,11 @@ const ListClassrooms = () => {
   const [classrooms, setClassrooms] = useState([]);
   const [selectedClassroom, setSelectedClassroom] = useState('');
   const [selectedId, setSelectedId] = useState('');
+  const [Loading, setLoading] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         const payload = {
@@ -90,17 +101,26 @@ const ListClassrooms = () => {
         const res = await listClassroom(payload);
         const list = await res.json();
         setClassrooms(list);
+        if (!Array.isArray(list)) {
+          setLoading(true);
+          setError('Join School First or School Did Not Created Any Classroom');
+        } else {
+          setLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching classrooms:', error);
       }
     };
-
     fetchData();
   }, [token]);
 
   const handleClassroomSelect = (event) => {
     setSelectedClassroom(event.target.value);
-    const selectedClassroomId = event.target.value ? classrooms.find((classroom) => classroom.classroom === event.target.value)._id : '';
+    const selectedClassroomId = event.target.value
+      ? classrooms.find(
+          (classroom) => classroom.classroom === event.target.value
+        )._id
+      : '';
     setSelectedId(selectedClassroomId);
   };
 
@@ -108,17 +128,17 @@ const ListClassrooms = () => {
     try {
       // console.log(selectedId);
       // You can perform further actions here with the selectedId
-        if(!selectedId){
-            throw new Error("Select Classroom to Join")
-        }
+      if (!selectedId) {
+        throw new Error('Select Classroom to Join');
+      }
       const payload = {
         joinPayload: {
-          classroomId: selectedId
+          classroomId: selectedId,
         },
-        token: token
+        token: token,
       };
       await joinClassroomTeacher(payload);
-      
+
       // Display alert if no errors
       alert('Successfully joined classroom!');
     } catch (error) {
@@ -132,6 +152,7 @@ const ListClassrooms = () => {
     <Container maxWidth='sm'>
       <Typography variant='h4' align='center' gutterBottom>
         Select Classroom
+        {error && <Alert severity='error'>{error}</Alert>}
       </Typography>
       <Select
         fullWidth
@@ -141,15 +162,23 @@ const ListClassrooms = () => {
         <MenuItem value=''>
           <em>None</em>
         </MenuItem>
-        {classrooms.map((classroom) => (
-          <MenuItem key={classroom._id} value={classroom.classroom}>
-            {classroom.classroom}
-          </MenuItem>
-        ))}
+        {Loading ? (
+          <CircularProgress size={24} />
+        ) : (
+          classrooms.map((classroom) => (
+            <MenuItem key={classroom._id} value={classroom.classroom}>
+              {classroom.classroom}
+            </MenuItem>
+          ))
+        )}
       </Select>
-      <Button variant='contained' color='primary' onClick={handleSubmit}>
-        Submit
-      </Button>
+      {Loading ? (
+        <CircularProgress size={24} />
+      ) : (
+        <Button variant='contained' color='primary' onClick={handleSubmit}>
+          Submit
+        </Button>
+      )}
     </Container>
   );
 };

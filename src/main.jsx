@@ -8,9 +8,11 @@ import Login from './pages/auth/login';
 import ForgetPassword from './pages/auth/forgotpassword';
 import LandingPage from './pages/Home/index';
 import OTPValidation from './pages/auth/otpvalidation';
-import Profile from './pages/Profile/profile';
-import {ListStudents} from './pages/Dashboard/Parent/ListStudent/ListStudents';
-
+import SchoolInfo from './pages/Dashboard/SchoolInfo/SchoolInfo';
+import { ListStudents } from './pages/Dashboard/Parent/ListStudent/ListStudents';
+import  AdminProfile  from './pages/Dashboard/Admin/Profile/AdminProfile';
+import  ParentProfile  from './pages/Dashboard/Parent/Profile/ParentProfile';
+import TeacherProfile  from './pages/Dashboard/Teacher/Profile/TeacherProfile';
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
 
@@ -47,7 +49,8 @@ const router = createBrowserRouter(
         <Route path='/resetpassword' element={<ResetPassword />} />
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
-        <Route path='/admin/profile' element={<Profile />} />
+        <Route path='/admin/profile' element={<AdminProfile />} />
+        <Route path='/admin/school' element={<SchoolInfo />} />
         <Route
           path='/admin/createclassroom'
           element={<CreateClassroomForm />}
@@ -60,13 +63,16 @@ const router = createBrowserRouter(
         <Route path='/admin/attendance' element={<DataGridDemo />} />
       </Route>
       <Route path='/parent/' element={<ParentLayout />}>
-        <Route path='/parent/profile' element={<Profile />} />
+        <Route path='/parent/profile' element={<ParentProfile />} />
+        <Route path='/parent/myschool' element={<SchoolInfo />} />
         <Route path='/parent/join-school' element={<JoinByInviteCode />} />
         <Route path='/parent/addmychild' element={<StudentDetailsForm />} />
-        <Route path='/parent/mychild' element={<ListStudents/>} />
+        <Route path='/parent/mychild' element={<ListStudents />} />
       </Route>
       <Route path='/teacher/' element={<TeacherLayout />}>
-        <Route path='/teacher/profile' element={<Profile />} />
+        <Route path='/teacher/profile' element={<TeacherProfile />} />
+        <Route path='/teacher/myschool' element={<SchoolInfo />} />
+        {/* <Route path='/teacher/profile' element={<Profile />} /> */}
         <Route path='/teacher/join-school' element={<JoinByInviteCode />} />
         <Route path='/teacher/join-classroom' element={<ListClassrooms />} />
         <Route path='/teacher/attendance' element={<AttendanceComponent />} />

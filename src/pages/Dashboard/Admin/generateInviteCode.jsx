@@ -27,7 +27,7 @@ const GenerateInviteCode = () => {
     };
 
     const res = await updateInviteCode(payload);
-    const updateded = await res.json();
+     await res.json();
     // console.log(updateded);
   };
 

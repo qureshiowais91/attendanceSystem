@@ -4,7 +4,7 @@ const ENDPOINT = {
   LOGIN: '/api/auth/login',
   RESET: '/api/resetpassword',
   VALIDATE: '/api/validateotp',
-  PROFILE: '/api/profile',
+  PROFILE: '/api/user/profile',
   INVITECODE: '/api/genrateInviteCode',
   JOINSCHOOL: '/api/joinbyInviteCode',
   CREATESCHOOL: '/api/school',

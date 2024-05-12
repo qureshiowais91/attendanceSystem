@@ -52,7 +52,7 @@ function Login() {
             navigate('/admin/profile');
             break;
           case 'parent':
-            navigate('/parent/profile');
+            navigate('/parent/mychild');
             break;
           case 'teacher':
             navigate('/teacher/profile');

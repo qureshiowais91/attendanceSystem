@@ -21,19 +21,21 @@ const AttendanceComponent = () => {
   const token = useSelector((state) => state.auth.jwt);
   const [loading, setLoading] = useState(false);
   const [classroomId, setClassroomId] = useState(false);
+  // const [error, setError] = useState();
+
+
+
   const onClassSelect = async (classroomId) => {
-    setLoading(true);
     const payload = { token, classroomId };
     const res = await getStudentsByClassroom(payload);
     const studentList = await res.json();
-    const updatedStudents = studentList.students.map((student) => ({
+    studentList.students.map((student) => ({
       ...student,
       absent: false, // Assuming initial attendance is set to false (not absent)
     }));
-    setStudents(updatedStudents);
-    setLoading(false);
     setClassroomId(() => classroomId);
   };
+
 
   const handleToggleAttendance = (studentId) => {
     setStudents((prevStudents) =>
@@ -108,7 +110,6 @@ const AttendanceComponent = () => {
             </Table>
           </TableContainer>
           <Button
-           
             variant='contained'
             color='primary'
             onClick={handleSubmitAttendance}

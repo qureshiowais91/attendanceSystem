@@ -57,7 +57,7 @@ function AdminLayout() {
           <List>
             <ListItem component={Link} to='/teacher/profile'>
               <ListItemText primary='Profile' />
-            </ListItem>
+            </ListItem> 
 
             <ListItem component={Link} to='/teacher/join-school'>
               <ListItemText primary='Join School' />
