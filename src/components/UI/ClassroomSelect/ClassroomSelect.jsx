@@ -48,7 +48,7 @@ const ClassSelector = ({ onClassSelect }) => {
     };
 
     fetchData();
-  }, [token, classrooms]);
+  }, [token]);
 
   const handleClassChange = (event) => {
     const { value } = event.target;
