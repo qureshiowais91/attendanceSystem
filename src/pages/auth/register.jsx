@@ -43,10 +43,10 @@ function Register() {
     let valid = true;
     const newErrors = { email: '', password: '', confirmpassword: '' };
 
-    if (!user.email || !/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(user.email)) {
-      newErrors.email = 'Please enter a valid Gmail address';
-      valid = false;
-    }
+    // if (!user.email || !/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(user.email)) {
+    //   newErrors.email = 'Please enter a valid Gmail address';
+    //   valid = false;
+    // }
 
     if (!user.password || user.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters long';
