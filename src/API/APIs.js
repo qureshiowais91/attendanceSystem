@@ -17,6 +17,7 @@ const ENDPOINT = {
   CREATEATTENDANCE: '/api/user/attendance',
   RESETPASSWORD: '/api/reset',
   LISTSTUDENTS: '/api/user/students',
+  VIEWATTANDANCE: '/api/user/viewAttendance',
 };
 
 // Auth
@@ -222,6 +223,17 @@ const students = async (payload) => {
   return await fetch(BASEURL + ENDPOINT.LISTSTUDENTS + payload.query, opt);
 };
 
+const viewattandance = async (payload) => {
+  const opt = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${payload.token}`,
+    },
+  };
+  return await fetch(BASEURL + ENDPOINT.VIEWATTANDANCE, opt);
+};
+
 export {
   register,
   login,
@@ -240,4 +252,5 @@ export {
   createAttendance,
   resetpassword,
   students,
+  viewattandance
 };

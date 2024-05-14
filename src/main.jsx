@@ -35,7 +35,7 @@ import CreateClassroomForm from './pages/Dashboard/Admin/CreateClassroom/CreateC
 import ListClassrooms from './pages/Dashboard/Teacher/Join-Classroom/joinClassroom';
 import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance';
 import ResetPassword from './pages/auth/resetpassword';
-import DataGridDemo from './components/attendance/table';
+import ViewAttendance from './components/viewAttendance/ViewAttendance';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,7 +60,7 @@ const router = createBrowserRouter(
           element={<GenerateInviteCode />}
         />
         <Route path='/admin/createNewSchool' element={<CreateSchool />} />
-        <Route path='/admin/attendance' element={<DataGridDemo />} />
+        <Route path='/admin/attendance' element={<ViewAttendance />} />
       </Route>
       <Route path='/parent/' element={<ParentLayout />}>
         <Route path='/parent/profile' element={<ParentProfile />} />
@@ -76,6 +76,8 @@ const router = createBrowserRouter(
         <Route path='/teacher/join-school' element={<JoinByInviteCode />} />
         <Route path='/teacher/join-classroom' element={<ListClassrooms />} />
         <Route path='/teacher/attendance' element={<AttendanceComponent />} />
+        <Route  path='/teacher/viewAttendance'  element={<ViewAttendance/>}/>
+
       </Route>
     </React.Fragment>
   )

@@ -55,7 +55,7 @@ const AttendanceComponent = () => {
 
   const handleSubmitAttendance = async () => {
     setLoading(true);
-    setResMessage(false);
+    setResMessage();
     const absentStudents = students.filter((student) => student.absent);
     const presentStudents = students.filter((student) => !student.absent);
 
