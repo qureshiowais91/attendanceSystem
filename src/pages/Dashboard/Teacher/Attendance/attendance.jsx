@@ -11,6 +11,7 @@ import {
   TableHead,
   TableRow,
   Switch,
+  Alert
 } from '@mui/material';
 import ClassSelector from '../../../../components/UI/ClassroomSelect/ClassroomSelect';
 import { getStudentsByClassroom, createAttendance } from '../../../../API/APIs';
@@ -21,6 +22,7 @@ const AttendanceComponent = () => {
   const token = useSelector((state) => state.auth.jwt);
   const [loading, setLoading] = useState(false);
   const [classroomId, setClassroomId] = useState(false);
+  const [resMessage,setResMessage]  = useState();
   // const [error, setError] = useState();
 
   const onClassSelect = async (classroomId) => {
@@ -52,6 +54,7 @@ const AttendanceComponent = () => {
   };
 
   const handleSubmitAttendance = async () => {
+    setLoading(true);
     const absentStudents = students.filter((student) => student.absent);
     const presentStudents = students.filter((student) => !student.absent);
 
@@ -67,9 +70,13 @@ const AttendanceComponent = () => {
     try {
       const res = await createAttendance(payload);
       const attendance = await res.json();
-      if (attendance) {
+      if (attendance=="Attendance has already been submitted for this classroom today.") {
+        setLoading(false);
+        console.log(attendance)
         // console.log(attendance);
+        setResMessage("Attendance has already been submitted for this classroom today.");
       }
+    setLoading(false)
     } catch (error) {
       // console.log(error);
     }
@@ -78,6 +85,7 @@ const AttendanceComponent = () => {
   return (
     <Box p={2}>
       <ClassSelector onClassSelect={onClassSelect} />
+      {resMessage && <Alert severity='info'>{resMessage}</Alert>}
       {loading ? (
         <Box
           display='flex'
