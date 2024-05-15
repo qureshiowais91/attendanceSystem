@@ -9,20 +9,24 @@ const CreateSchool = () => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [contactDetails, setContactDetails] = useState('');
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(false);
 
   const token = useSelector((state) => state.auth.jwt);
-  const payload = {
-    school: {
-      name: name,
-      address: address,
-      contactDetails: contactDetails,
-    },
-    token: token,
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (name.length < 5 || address.length < 10 || contactDetails.length !== 10) {
+      setMessage('Please provide valid inputs');
+      return;
+    }
+    const payload = {
+      school: {
+        name: name,
+        address: address,
+        contactDetails: contactDetails,
+      },
+      token: token,
+    };
 
     try {
       // Send POST request to create school endpoint
@@ -54,6 +58,8 @@ const CreateSchool = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              error={name.length < 5}
+              helperText={name.length < 5 ? 'Name must be at least 5 characters' : ''}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -64,6 +70,8 @@ const CreateSchool = () => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
+              error={address.length < 10}
+              helperText={address.length < 10 ? 'Address must be at least 10 characters' : ''}
             />
           </Grid>
           <Grid item xs={12}>
@@ -74,6 +82,8 @@ const CreateSchool = () => {
               value={contactDetails}
               onChange={(e) => setContactDetails(e.target.value)}
               required
+              error={contactDetails.length !== 10}
+              helperText={contactDetails.length !== 10 ? 'Contact details must be 10 characters' : ''}
             />
           </Grid>
         </Grid>

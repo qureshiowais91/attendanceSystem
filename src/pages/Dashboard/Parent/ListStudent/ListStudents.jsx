@@ -10,18 +10,23 @@ import {
   TableCell,
   TableBody,
 } from '@mui/material';
+
 export const ListStudents = () => {
   const [data, setData] = useState();
+  const [token, setToken] = useState();
+  const [id, setID] = useState();
   const [Loading, setLoading] = useState();
   // const columns = useMemo(() => COLUMNS,[]);
-  const token = useSelector((state) => {
-    return state.auth.jwt;
+  const user = useSelector((state) => {
+    return state.auth;
   });
-  const id = useSelector((state) => {
-    return state.auth.id;
-  });
+  console.log(user)
+
   useEffect(() => {
     setLoading(true);
+    setID(user.id);
+    console.log(user.id)
+    setToken(user.jwt);
     (async () => {
       try {
         const payload = {
@@ -44,7 +49,7 @@ export const ListStudents = () => {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [token]);
 
   return (
     <Table>
