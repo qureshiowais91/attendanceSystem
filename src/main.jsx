@@ -76,7 +76,7 @@ const router = createBrowserRouter(
         <Route path='/teacher/join-school' element={<JoinByInviteCode />} />
         <Route path='/teacher/join-classroom' element={<ListClassrooms />} />
         <Route path='/teacher/attendance' element={<AttendanceComponent />} />
-        <Route  path='/teacher/viewAttendance'  element={<ViewAttendance/>}/>
+        <Route path='/teacher/viewAttendance'  element={<ViewAttendance/>}/>
 
       </Route>
     </React.Fragment>

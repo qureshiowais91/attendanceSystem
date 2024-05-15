@@ -69,6 +69,14 @@ function AdminLayout() {
             <ListItem component={Link} to='/teacher/attendance'>
               <ListItemText primary='Attendance' />
             </ListItem>
+
+
+            <ListItem component={Link} to='/teacher/viewAttendance'>
+              <ListItemText primary='Veiw Attendance' />
+            </ListItem>
+            
+
+              
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
               <ThemeToggleButton
