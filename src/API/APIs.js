@@ -1,4 +1,5 @@
-const BASEURL = 'https://projectalphaapi.onrender.com';
+// const BASEURL = 'https://projectalphaapi.onrender.com';
+const BASEURL = 'http://194.195.116.185';
 const ENDPOINT = {
   REGISTER: '/api/auth/register',
   LOGIN: '/api/auth/login',
@@ -37,6 +38,7 @@ const login = async (payload) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin":"*"
     },
     body: JSON.stringify(payload),
   };
@@ -252,5 +254,5 @@ export {
   createAttendance,
   resetpassword,
   students,
-  viewattandance
+  viewattandance,
 };
