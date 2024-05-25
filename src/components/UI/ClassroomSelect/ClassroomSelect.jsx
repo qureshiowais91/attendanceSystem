@@ -63,7 +63,7 @@ const ClassSelector = ({ onClassSelect }) => {
         Select Classroom
         {error && <Alert severity='error'>{error}</Alert>}
       </Typography>
-      <FormControl fullWidth sx={{ marginBottom: 2 }}>
+      <FormControl variant='filled' fullWidth sx={{ marginBottom: 2 }}>
         <InputLabel>Select Class</InputLabel>
         <Select
           value={selectedClass}
