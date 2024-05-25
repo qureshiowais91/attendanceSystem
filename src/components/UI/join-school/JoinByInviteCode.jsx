@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { joinbyInviteCode } from '../../../API/APIs';
 import { useSelector } from 'react-redux';
-import { CircularProgress, Alert } from '@mui/material';
+import { CircularProgress, Alert, Box, Button, TextField } from '@mui/material';
 
 const JoinByInviteCode = () => {
   const [inviteCode, setInviteCode] = useState('');
@@ -45,22 +45,29 @@ const JoinByInviteCode = () => {
   };
 
   return (
-    <div>
-      <h1>Join by Invite Code</h1>
+    <Box>
       {res && <Alert severity='success'>{res}</Alert>}
       {error && <Alert severity='warning'>{error}</Alert>}
-      <input
+      <h2 >Join by Invite Code</h2>
+
+      <TextField
         type='text'
-        placeholder='Enter invite code...'
+        placeholder='Tap To Enter Code...'
         value={inviteCode}
         onChange={handleInviteCodeInput}
+        variant='filled'
       />
       {Loading ? (
         <CircularProgress size={24} />
       ) : (
-        <button onClick={handleJoin}>Join</button>
+        <Box mt={4} >
+          <Button onClick={handleJoin} variant='outlined'>
+            Join
+          </Button>
+        </Box>
+        // <button onClick={handleJoin}>Join</button>
       )}
-    </div>
+    </Box>
   );
 };
 
