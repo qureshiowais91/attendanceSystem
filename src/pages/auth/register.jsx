@@ -7,6 +7,7 @@ import {
   MenuItem,
   CircularProgress,
   Alert,
+  Box,
 } from '@mui/material';
 import { useState } from 'react';
 import { register } from '../../API/APIs';
@@ -118,8 +119,8 @@ function Register() {
   };
 
   return (
-    <div>
-      <img width='200px' height='200px' src='/register_1.svg' alt='Register' />
+    <Box mt={2} width={300}>
+      <img width='150px' height='150px' src='/register_1.svg' alt='Register' />
       {resError && <Alert severity='error'>{resError}</Alert>}
       <form>
         <TextField
@@ -183,18 +184,17 @@ function Register() {
         ) : (
           <Button
             type='submit'
-            variant='contained'
+            variant='outlined'
             color='primary'
             fullWidth
             size='large'
             onClick={registerHandler}
-            sx={{ mt: 2 }}
           >
             Register
           </Button>
         )}
       </form>
-    </div>
+    </Box>
   );
 }
 

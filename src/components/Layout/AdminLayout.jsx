@@ -11,7 +11,7 @@ import {
   ListItemText,
   IconButton,
 } from '@mui/material';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import { themeChanger } from '../../features/theme/themeSlice';
 import { useSelector } from 'react-redux';
 import DarkTheme from '../../styles/Theme/Dark';
@@ -20,7 +20,10 @@ import { ThemeProvider } from '@mui/material/styles';
 
 function AdminLayout() {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const location = useLocation(); // Use useLocation hook to get the current route
+
   const dispatch = useDispatch();
+
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
@@ -55,19 +58,40 @@ function AdminLayout() {
           }}
         >
           <List>
-             <ListItem component={Link} to='/admin/profile'>
+          
+            <ListItem
+              button
+              component={Link}
+              to='/admin/profile'
+              selected={location.pathname === '/admin/profile'}
+            >
               <ListItemText primary='Profile' />
-            </ListItem> 
-               <ListItem component={Link} to='/admin/generateInviteCode'>
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to='/admin/generateInviteCode'
+              selected={location.pathname === '/admin/generateInviteCode'}
+            >
               <ListItemText primary='Generate Invite Code' />
             </ListItem>
-            <ListItem component={Link} to='/admin/createclassroom'>
+            <ListItem
+              button
+              component={Link}
+              to='/admin/createclassroom'
+              selected={location.pathname === '/admin/createclassroom'}
+            >
               <ListItemText primary='Create Classroom' />
             </ListItem>
-            <ListItem component={Link} to='/admin/attendance'>
+            <ListItem
+              button
+              component={Link}
+              to='/admin/attendance'
+              selected={location.pathname === '/admin/attendance'}
+            >
               <ListItemText primary='List Attendance' />
             </ListItem>
-            
+
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
               <ThemeToggleButton

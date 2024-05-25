@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField, Button, CircularProgress, Alert } from '@mui/material';
+import { TextField, Button, CircularProgress, Alert,Box } from '@mui/material';
 import { login } from '../../API/APIs';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../features/auth/authSlice';
@@ -70,8 +70,8 @@ function Login() {
   };
 
   return (
-    <div>
-      <img width='200px' height='200px' src='/login_1.svg'></img>
+    <Box mt={2} width={300}>
+      <img width='150px' height='150px' src='/login_1.svg'></img>
       {resError && <Alert severity='error'>{resError}</Alert>}
       <form onSubmit={handleLogin}>
         <TextField
@@ -97,7 +97,7 @@ function Login() {
         ) : (
           <Button
             type='submit'
-            variant='contained'
+            variant='outlined'
             color='primary'
             fullWidth
             size='large'
@@ -107,7 +107,7 @@ function Login() {
           </Button>
         )}
       </form>
-    </div>
+    </Box>
   );
 }
 

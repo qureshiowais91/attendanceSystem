@@ -1,28 +1,32 @@
 import { createTheme } from '@mui/material/styles';
 
 const DarkTheme = createTheme({
-    palette: {
-        type: 'dark', // Set the palette type to dark
-        primary: {
-            main: '#90caf9', // Change primary color for dark theme
-        },
-        secondary: {
-            main: '#f48fb1', // Change secondary color for dark theme
-        },
-        background: {
-            default: '#303030', // Default background color for dark theme
-            paper: '#424242', // Paper background color for dark theme
-        },
-        text: {
-            primary: '#ffffff', // Primary text color for dark theme
-            secondary: '#eeeeee', // Secondary text color for dark theme
-        },
-        input: {
-            textColor: '#ffffff', // Input text color for dark theme
-        },
+  typography: {
+    button: {
+      textTransform: 'none',
     },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 50,
+        },
+      },
+    },
+  },
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#7E57C2', // Dark Purple
+    },
+    secondary: {
+      main: '#1a8273', // Darker shade of teal
+    },
+    tertiary: {
+      main: '#b8962c', // Darker shade of yellow
+    },
+  },
 });
 
-
-
-export default DarkTheme
+export default DarkTheme;

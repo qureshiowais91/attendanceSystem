@@ -11,7 +11,7 @@ import {
   ListItemText,
   IconButton,
 } from '@mui/material';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import { themeChanger } from '../features/theme/themeSlice';
 import { useSelector } from 'react-redux';
 import DarkTheme from '../styles/Theme/Dark';
@@ -19,6 +19,7 @@ import LightTheme from '../styles/Theme/Light';
 import { ThemeProvider } from '@mui/material/styles';
 
 function Layout() {
+  const location = useLocation(); // Use useLocation hook to get the current route
   const [openDrawer, setOpenDrawer] = useState(false);
   const dispatch = useDispatch();
   const handleDrawerOpen = () => {
@@ -41,7 +42,7 @@ function Layout() {
               onClick={handleDrawerOpen}
               edge='start'
             >
-                Menu
+              Menu
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -55,17 +56,36 @@ function Layout() {
           }}
         >
           <List>
-            <ListItem button component={Link} to='/'>
+            <ListItem
+              button
+              component={Link}
+              to='/'
+              selected={location.pathname === '/'}
+            >
               <ListItemText primary='Home' />
             </ListItem>
-            <ListItem button component={Link} to='/Register'>
+            <ListItem
+              button
+              component={Link}
+              to='/Register'
+              selected={location.pathname === '/Register'}
+            >
               <ListItemText primary='Register' />
             </ListItem>
-
-            <ListItem button component={Link} to='/login'>
+            <ListItem
+              button
+              component={Link}
+              to='/login'
+              selected={location.pathname === '/login'}
+            >
               <ListItemText primary='Login' />
             </ListItem>
-            <ListItem button component={Link} to='/forgotpassword'>
+            <ListItem
+              button
+              component={Link}
+              to='/forgotpassword'
+              selected={location.pathname === '/forgotpassword'}
+            >
               <ListItemText primary='Forgot Password' />
             </ListItem>
             <ListItem>

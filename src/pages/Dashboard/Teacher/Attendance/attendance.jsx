@@ -11,7 +11,7 @@ import {
   TableHead,
   TableRow,
   Switch,
-  Alert
+  Alert,
 } from '@mui/material';
 import ClassSelector from '../../../../components/UI/ClassroomSelect/ClassroomSelect';
 import { getStudentsByClassroom, createAttendance } from '../../../../API/APIs';
@@ -22,7 +22,7 @@ const AttendanceComponent = () => {
   const token = useSelector((state) => state.auth.jwt);
   const [loading, setLoading] = useState(false);
   const [classroomId, setClassroomId] = useState(false);
-  const [resMessage,setResMessage]  = useState();
+  const [resMessage, setResMessage] = useState();
   // const [error, setError] = useState();
 
   const onClassSelect = async (classroomId) => {
@@ -71,20 +71,25 @@ const AttendanceComponent = () => {
     try {
       const res = await createAttendance(payload);
       const attendance = await res.json();
-      if (attendance=="Attendance has already been submitted for this classroom today.") {
+      if (
+        attendance ==
+        'Attendance has already been submitted for this classroom today.'
+      ) {
         setLoading(false);
-        console.log(attendance)
+        console.log(attendance);
         // console.log(attendance);
-        setResMessage("Attendance has already been submitted for this classroom today.");
+        setResMessage(
+          'Attendance has already been submitted for this classroom today.'
+        );
       }
-    setLoading(false)
+      setLoading(false);
     } catch (error) {
       // console.log(error);
     }
   };
 
   return (
-    <Box p={2}>
+    <Box p={2} mt={2}>
       <ClassSelector onClassSelect={onClassSelect} />
       {resMessage && <Alert severity='info'>{resMessage}</Alert>}
       {loading ? (
@@ -122,13 +127,15 @@ const AttendanceComponent = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={handleSubmitAttendance}
-          >
-            Mark Attendance
-          </Button>
+          <Box mt={4}>
+            <Button
+              variant='outlined'
+              color='primary'
+              onClick={handleSubmitAttendance}
+            >
+              Mark Attendance
+            </Button>
+          </Box>
         </Box>
       )}
     </Box>
