@@ -19,7 +19,7 @@ const ENDPOINT = {
   RESETPASSWORD: '/api/reset',
   LISTSTUDENTS: '/api/user/students',
   VIEWATTANDANCE: '/api/user/viewAttendance',
-  PUBLICPROFILE: '/api/school/inviteCode',
+  PUBLICPROFILE: '/api/school',
 };
 
 // Auth
