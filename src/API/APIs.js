@@ -1,5 +1,5 @@
 // const BASEURL = 'https://projectalphaapi.onrender.com';
-const BASEURL = 'https://schoolwool.site';
+const BASEURL = 'https://api.schoolwool.site';
 const ENDPOINT = {
   REGISTER: '/api/auth/register',
   LOGIN: '/api/auth/login',
@@ -19,6 +19,7 @@ const ENDPOINT = {
   RESETPASSWORD: '/api/reset',
   LISTSTUDENTS: '/api/user/students',
   VIEWATTANDANCE: '/api/user/viewAttendance',
+  PUBLICPROFILE: '/api/school/inviteCode',
 };
 
 // Auth
@@ -38,7 +39,7 @@ const login = async (payload) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin":"*"
+      'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify(payload),
   };
@@ -236,6 +237,16 @@ const viewattandance = async (payload) => {
   return await fetch(BASEURL + ENDPOINT.VIEWATTANDANCE, opt);
 };
 
+const publicprofile = async (payload) => {
+  const opt = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
+  return await fetch(BASEURL + ENDPOINT.PUBLICPROFILE+"?profile=" + payload.query, opt);
+};
+
 export {
   register,
   login,
@@ -255,4 +266,5 @@ export {
   resetpassword,
   students,
   viewattandance,
+  publicprofile
 };
