@@ -11,17 +11,17 @@ import {
 } from '@mui/material';
 
 function PublicProfile() {
-  const { userId } = useParams(); // Assuming the school ID is passed as a parameter in the URL
+  const { id } = useParams(); // Assuming the school ID is passed as a parameter in the URL
   const [school, setSchool] = useState(null);
-
+console.log(id)
   useEffect(() => {
     const fetchSchoolData = async () => {
       try {
         const payload = {
-          query: userId,
+          query: id,
         };
         const response = await publicprofile(payload);
-        console.log(userId);
+        console.log(id);
         if (!response.ok) {
           throw new Error('Failed to fetch school data');
         }
@@ -34,7 +34,7 @@ function PublicProfile() {
     };
 
     fetchSchoolData();
-  }, [userId]);
+  }, [id]);
 
   if (!school) {
     return <div>Loading...</div>;
