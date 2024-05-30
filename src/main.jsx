@@ -37,7 +37,8 @@ import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance
 import ResetPassword from './pages/auth/resetpassword';
 import ViewAttendance from './components/viewAttendance/ViewAttendance';
 import PublicProfile from './pages/Dashboard/Admin/Profile/PublicProfile';
-
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // Import React Query
 const router = createBrowserRouter(
   createRoutesFromElements(
     <React.Fragment>
@@ -48,7 +49,7 @@ const router = createBrowserRouter(
         <Route path='/forgotpassword' element={<ForgetPassword />} />
         <Route path='/validateOtp' element={<OTPValidation />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
-        <Route path=":userId" element={<PublicProfile />} />
+        <Route path='/profile/:id' element={<PublicProfile />} />
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
         <Route path='/admin/profile' element={<AdminProfile />} />
@@ -84,9 +85,14 @@ const router = createBrowserRouter(
   )
 );
 
+const queryClient = new QueryClient();
 // Render the app with hooks
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <RouterProvider router={router}></RouterProvider>
+    {/* Provide the QueryClient to your app */}
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router}></RouterProvider>
+      <ReactQueryDevtools initialIsOpen={true} position={top} />
+    </QueryClientProvider>
   </Provider>
 );
