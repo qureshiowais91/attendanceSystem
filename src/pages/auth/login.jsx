@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { TextField, Button, CircularProgress, Alert,Box } from '@mui/material';
+import { TextField, Button, CircularProgress, Alert, Box } from '@mui/material';
 import { login } from '../../API/APIs';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import LogRocket from 'logrocket';
 
 function Login() {
   const [user, setUser] = useState({});
@@ -18,7 +19,9 @@ function Login() {
     setUser((prev) => ({ ...prev, [name]: value }));
     setError('');
   };
-
+  LogRocket.identify(user.email, {
+    email: user.email,
+  });
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
