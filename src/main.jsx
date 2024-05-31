@@ -15,7 +15,6 @@ import ParentProfile from './pages/Dashboard/Parent/Profile/ParentProfile';
 import TeacherProfile from './pages/Dashboard/Teacher/Profile/TeacherProfile';
 import { Provider } from 'react-redux';
 import { store } from './services/app/store';
-
 import './index.css';
 
 import {
@@ -36,12 +35,12 @@ import ListClassrooms from './pages/Dashboard/Teacher/Join-Classroom/joinClassro
 import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance';
 import ResetPassword from './pages/auth/resetpassword';
 import ViewAttendance from './components/viewAttendance/ViewAttendance';
-import PublicProfile from './pages/Dashboard/Admin/Profile/PublicProfile';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import DynamicSubdomainRoute from './pages/Dashboard/Admin/Profile/DynamicSubdomainRoute';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// import LogRocket from 'logrocket';
-// LogRocket.init('jo8m9z/projectalpha'); 
+ import LogRocket from 'logrocket';
+LogRocket.init('jo8m9z/projectalpha');
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -53,8 +52,10 @@ const router = createBrowserRouter(
         <Route path='/forgotpassword' element={<ForgetPassword />} />
         <Route path='/validateOtp' element={<OTPValidation />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
-        <Route path='/profile' element={<PublicProfile />} />
       </Route>
+
+      {/* Subdomain route */}
+      <Route path='/*' element={<DynamicSubdomainRoute />} />
       <Route path='/admin/' element={<AdminLayout />}>
         <Route path='/admin/profile' element={<AdminProfile />} />
         <Route path='/admin/school' element={<SchoolInfo />} />
