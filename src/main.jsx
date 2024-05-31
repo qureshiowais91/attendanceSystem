@@ -40,8 +40,8 @@ import PublicProfile from './pages/Dashboard/Admin/Profile/PublicProfile';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import LogRocket from 'logrocket';
-LogRocket.init('jo8m9z/projectalpha'); 
+// import LogRocket from 'logrocket';
+// LogRocket.init('jo8m9z/projectalpha'); 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -53,7 +53,7 @@ const router = createBrowserRouter(
         <Route path='/forgotpassword' element={<ForgetPassword />} />
         <Route path='/validateOtp' element={<OTPValidation />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
-        <Route path='/profile/:id' element={<PublicProfile />} />
+        <Route path='/profile' element={<PublicProfile />} />
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
         <Route path='/admin/profile' element={<AdminProfile />} />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { publicprofile } from '../../../../API/APIs';
 import {
   Typography,
@@ -11,17 +11,23 @@ import {
 } from '@mui/material';
 
 function PublicProfile() {
-  const { id } = useParams(); // Assuming the school ID is passed as a parameter in the URL
+  let [searchParams, setSearchParams] = useSearchParams();
+  // const [school, setSchool] = useState(null);
+   console.log(searchParams)
+   const logSearchParams = () => {
+    console.log(searchParams.get("id")); 
+     // url is assumed as https://.....com?samplekey="dummy"
+  };
+  logSearchParams();
   const [school, setSchool] = useState(null);
-console.log(id)
   useEffect(() => {
     const fetchSchoolData = async () => {
       try {
         const payload = {
-          query: id,
+          query: searchParams.get("id"),
         };
         const response = await publicprofile(payload);
-        console.log(id);
+       
         if (!response.ok) {
           throw new Error('Failed to fetch school data');
         }
@@ -34,7 +40,7 @@ console.log(id)
     };
 
     fetchSchoolData();
-  }, [id]);
+  }, [searchParams.get("id")]);
 
   if (!school) {
     return <div>Loading...</div>;
