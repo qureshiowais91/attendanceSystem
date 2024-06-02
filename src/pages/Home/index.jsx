@@ -9,10 +9,10 @@ function LandingPage() {
     navigate('/register');
   };
 
-  const rediretLogin =(e)=>{
+  const rediretLogin = (e) => {
     e.preventDefault();
-    navigate('/login')
-  }
+    navigate('/login');
+  };
 
   return (
     <div className='container' id='landingPage'>
@@ -29,82 +29,102 @@ function LandingPage() {
         <div className='content'>
           <h1 className='largeText'>HERO</h1>
           <p className='subheading'>
-            Hero Say goodbye to fading attendance registers and hello to digital
-            efficiency! At Attendance Hero, we cater to every school’s need for
-            seamless management of their attendance system.
+            To ensure the safety and protection of every Student.where their
+            well-being comes first.
           </p>
         </div>
       </section>
       <section className='section2'>
         <div className='content'>
-          <h2>Why Choose Attendance Hero?</h2>
+          <h2>Why Choose Us?</h2>
           <div className='row'>
             <div className='column'>
               <h2>Instant notification</h2>
               <p>
-                Parents get notified in real-time if the student is marked
-                absent.
+                Instant alerts create a sense of reassurance for parents,
+                keeping them informed about their child's well-being.
               </p>
               <h2>Easy attendance tracking</h2>
               <p>
-                Schools can manage attendance with ease, saving time and
-                avoiding errors.
+                Effortless updates foster stronger bonds between schools and
+                families, enhancing trust and connection through seamless
+                communication channels.
               </p>
               <h2>Secure and Reliable</h2>
               <p>
-                Details are safe, encrypted, and accessible only to authorised
-                users.
+                Your information remains protected and secure, accessible only
+                to those with authorized access.
               </p>
             </div>
             <div className='column'>
+              <h2>Customized Solutions</h2>
+              <p>
+                Tailored options to match the unique requirements of your
+                school, ensuring flexibility and personalized service.
+              </p>
               <h2>Better communication</h2>
               <p>
-                Automated attendance reporting to heighten school-parent
-                communication.
+                Effortless updates foster stronger bonds between schools and
+                families, enhancing trust and connection through seamless
+                communication channels.
               </p>
-              <h2>Customised solutions</h2>
-              <p>Modifiable options to cater to each school’s unique needs.</p>
               <h2>24/7 Support</h2>
               <p>
-                Our team is always ready to assist via call, email, or chat.
+                Assistance is available round the clock via call, email, or
+                chat, ensuring help is just a message away whenever you need it.
               </p>
             </div>
           </div>
 
           <p className='subtext'>
-            Register for 3 years and get a free website for your school!
+            Register For 3 Years And Get a FREE Website! <br/> <br/>For 3 Years
           </p>
           <button className='cta-button' onClick={redirect}>
             Register Now
-          </button> 
+          </button>
+
+          <p>Already Have An Account ?</p>
           <button className='cta-button' onClick={rediretLogin}>
             Login
           </button>
         </div>
       </section>
       <section className='section3'>
-  <div className='content'>
-    <h2>Frequently Asked Questions</h2>
-    <div className='faq'>
-      <p>
-        <strong>Are there custom packages available for schools?</strong>
-      </p>
-      <p>Yes, we offer tailored solutions to fit your unique needs.</p>
-    </div>
-    <div className='faq'>
-      <p>
-        <strong>How long does it take to set up Attendance Hero for our school?</strong>
-      </p>
-      <p> Typically, users find it to be a straightforward process, taking no longer than a day. Rest assured, we are dedicated to making the setup experience as seamless as possible for you</p>
-    </div>
-    <div className='faq'>
-      <p>
-        <strong>What kind of support do you offer if we encounter any issues?</strong>
-      </p>
-      <p>We provide comprehensive support to our customers round the clock. Whether you have technical questions, need assistance with setup, or encounter any issues, our dedicated support team is available via call, email, or chat to address your concerns promptly.</p>
-    </div>
-  </div>
-</section>
+        <div className='content'>
+          <h2>Frequently Asked Questions</h2>
+          <div className='faq'>
+            <p>
+              <strong>Are there custom packages available for schools?</strong>
+            </p>
+            <p>Yes, we offer tailored solutions to fit your unique needs.</p>
+          </div>
+          <div className='faq'>
+            <p>
+              <strong>
+                How long does it take to set up Attendance Hero for our school?
+              </strong>
+            </p>
+            <p>
+              Typically, users find it to be a straightforward process, taking
+              no longer than a day. Rest assured, we are dedicated to making the
+              setup experience as seamless as possible for you
+            </p>
+          </div>
+          <div className='faq'>
+            <p>
+              <strong>
+                What kind of support do you offer if we encounter any issues?
+              </strong>
+            </p>
+            <p>
+              We provide comprehensive support to our customers round the clock.
+              Whether you have technical questions, need assistance with setup,
+              or encounter any issues, our dedicated support team is available
+              via call, email, or chat to address your concerns promptly.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <footer>
         <div>Contact Us:</div>
