@@ -108,7 +108,7 @@ function LandingPage() {
 
       <footer>
         <div>Contact Us:</div>
-        <div>Email: alert.schoolwool.site</div>
+        <div>Email: alert@schoolwool.site</div>
         <div>© {2024} Little Guardian . All rights reserved.</div>
       </footer>
     </div>
