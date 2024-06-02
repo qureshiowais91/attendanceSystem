@@ -36,7 +36,6 @@ import ListClassrooms from './pages/Dashboard/Teacher/Join-Classroom/joinClassro
 import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance';
 import ResetPassword from './pages/auth/resetpassword';
 import ViewAttendance from './components/viewAttendance/ViewAttendance';
-import PublicProfile from './pages/Dashboard/Admin/Profile/PublicProfile';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -46,6 +45,10 @@ LogRocket.init('jo8m9z/projectalpha');
 const router = createBrowserRouter(
   createRoutesFromElements(
     <React.Fragment>
+
+   
+       <Route path='/' element={<LandingPage />} />
+ 
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/register' element={<Register />} />
@@ -53,7 +56,6 @@ const router = createBrowserRouter(
         <Route path='/forgotpassword' element={<ForgetPassword />} />
         <Route path='/validateOtp' element={<OTPValidation />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
-        <Route path='/profile' element={<PublicProfile />} />
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
         <Route path='/admin/profile' element={<AdminProfile />} />

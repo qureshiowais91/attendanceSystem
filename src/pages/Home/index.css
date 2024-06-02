@@ -1,0 +1,261 @@
+/* Section 1 styles */
+.section1 {
+  height: 100vh;
+  background-image: url('https://framerusercontent.com/images/uC2N9Gzgc6WZuFoBt3julPmfmlI.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  overflow-x: hidden;
+  /* Prevent horizontal overflow */
+}
+
+/* Large hero text */
+.section1 h1 {
+  font-size: 10vw;
+  margin-bottom: 5vh;
+}
+
+/* Small hero text */
+@media (max-width: 767px) {
+  .section1 h1 {
+    font-size: 15vw;
+    margin-bottom: 3vh;
+  }
+}
+
+/* Extra small hero text */
+@media (max-width: 479px) {
+  .section1 h1 {
+    font-size: 16vw;
+    margin-bottom: 2vh;
+  }
+}
+
+/* Subheading styles for screens up to 300px */
+@media (max-width: 300px) {
+  .subheading {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+
+body {
+  font-size: 20px;
+  letter-spacing: 1px
+}
+
+/* Navigation styles */
+nav {
+  padding: 10px;
+  /* Add padding to the navigation */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+  /* Remove margin from the last list item */
+}
+
+nav ul li a {
+  text-decoration: none;
+  /* Remove underline from links */
+  color: white;
+  /* Text color */
+  font-weight: bold;
+  /* Make text bold */
+  font-size: 18px;
+  /* Adjust font size */
+  padding: 5px 10px;
+  /* Add padding to links */
+  border-radius: 5px;
+  /* Add rounded corners */
+}
+
+nav ul li a:hover {
+  background-color: #FF8C00;
+  /* Darker shade of orange on hover */
+}
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul h2 {
+  font-size: 24px; /* Adjust font size as needed */
+  margin-bottom: 10px; /* Add margin between list items */
+}
+
+
+
+/* Text styles */
+  .section2{
+    border-radius:2rem;
+  }
+/* Section 2 styles */
+.section2 .content ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Center list items horizontally */
+  text-align: center;
+  /* Center text content */
+}
+
+.section2 .content ul li {
+  flex-basis: 30%;
+  padding: 2rem;
+  /* Each list item occupies half the width */
+}
+
+/* Adjust as needed */
+.section2 .content ul li {
+  margin-bottom: 10px;
+  /* Adding space between list items */
+}
+
+/* Optional: Adjust button and subtext position */
+.section2 .content .subtext {
+  margin-top: 20px;
+}
+
+.section2 .content .cta-button {
+  margin:2rem;
+}
+
+/* Overall container styles */
+.container {
+  width: 100%;
+  padding: 50px 20px;
+  /* Adjust padding as needed */
+  box-sizing: border-box;
+  /* Include padding in the total width */
+  text-align: center;
+  /* Center text content */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Heading styles */
+h1 {
+  font-family: "Silkscreen";
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+h2 {
+  
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: rgb(0, 0, 0);
+}
+
+/* Subheading styles */
+.subheading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+  max-width: 800px;
+
+}
+
+/* Subheading styles for screens up to 300px */
+@media (max-width: 300px) {
+  .subheading {
+    font-size: 15px;
+    /* Adjust font size for smaller screens */
+    margin-bottom: 15px;
+    /* Adjust margin for smaller screens */
+  }
+}
+
+/* List styles */
+ul {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  /* Adjust max-width as needed */
+  padding-left: 0;
+  /* Reset default padding */
+}
+
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+/* Subtext styles */
+.subtext {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* CTA button styles */
+.cta-button {
+  font-size: 24px;
+  padding: 10px 20px;
+  background-color: #54cbf2;
+  margin-bottom:1rem;
+  color: #f6f7f9;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+.cta-button:hover {
+  background-color: #54cbf2;
+}
+
+
+.largeText {
+  font-size: 15rem;
+}
+
+
+.section3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #3087df;
+  padding: 2rem;
+  border-radius:20px;
+  color: #f6f7f9 ;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
