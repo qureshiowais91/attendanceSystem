@@ -1,5 +1,5 @@
-// const BASEURL = 'https://projectalphaapi.onrender.com';
-const BASEURL = 'https://api.schoolwool.site';
+const BASEURL = 'https://projectalphaapi.onrender.com';
+// const BASEURL = 'https://api.schoolwool.site';
 const ENDPOINT = {
   REGISTER: '/api/auth/register',
   LOGIN: '/api/auth/login',
