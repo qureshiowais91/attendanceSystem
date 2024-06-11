@@ -76,6 +76,10 @@ function AdminLayout() {
             </ListItem>
             
 
+            <ListItem component={Link} to='/teacher/attendance/scanner'>
+              <ListItemText primary='Scan Attandance' />
+            </ListItem>
+            
               
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}

@@ -36,26 +36,29 @@ import ListClassrooms from './pages/Dashboard/Teacher/Join-Classroom/joinClassro
 import AttendanceComponent from './pages/Dashboard/Teacher/Attendance/attendance';
 import ResetPassword from './pages/auth/resetpassword';
 import ViewAttendance from './components/viewAttendance/ViewAttendance';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ScanQR } from './pages/Dashboard/Admin/StaffAttandace/ScanQR';
+import { StaffAttandaceScanner } from './pages/Dashboard/Teacher/Scanner/StaffAttandaceScanner';
+
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import LogRocket from 'logrocket';
+// import LogRocket from 'logrocket';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-LogRocket.init('jo8m9z/projectalpha'); 
+// LogRocket.init('jo8m9z/projectalpha');
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <React.Fragment>
-       <Route path='/' element={<LandingPage />} />
- 
+      <Route path='/' element={<LandingPage />} />
+
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/forgotpassword' element={<ForgetPassword />}/>
+        <Route path='/forgotpassword' element={<ForgetPassword />} />
         <Route path='/validateOtp' element={<OTPValidation />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
-        <Route path='privacy-policy'  element={<PrivacyPolicy/>}/>
+        <Route path='privacy-policy' element={<PrivacyPolicy />} />
       </Route>
       <Route path='/admin/' element={<AdminLayout />}>
         <Route path='/admin/profile' element={<AdminProfile />} />
@@ -70,6 +73,7 @@ const router = createBrowserRouter(
         />
         <Route path='/admin/createNewSchool' element={<CreateSchool />} />
         <Route path='/admin/attendance' element={<ViewAttendance />} />
+        <Route path='/admin/staff/attendance' element={<ScanQR />} />
       </Route>
       <Route path='/parent/' element={<ParentLayout />}>
         <Route path='/parent/profile' element={<ParentProfile />} />
@@ -86,6 +90,10 @@ const router = createBrowserRouter(
         <Route path='/teacher/join-classroom' element={<ListClassrooms />} />
         <Route path='/teacher/attendance' element={<AttendanceComponent />} />
         <Route path='/teacher/viewAttendance' element={<ViewAttendance />} />
+        <Route
+          path='/teacher/attendance/scanner'
+          element={<StaffAttandaceScanner />}
+        />
       </Route>
     </React.Fragment>
   )
