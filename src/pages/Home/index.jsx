@@ -1,6 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import './index.css'; // Import your CSS file for styling
-import { useNavigate } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
 function LandingPage() {
   const navigate = useNavigate();
 
@@ -125,12 +125,14 @@ function LandingPage() {
           </div>
         </div>
       </section>
-
       <footer>
-        <div>Contact Us:</div>
-        <div>Email: alert@schoolwool.site</div>
-        <div>© {2024} Little Guardian . All rights reserved.</div>
-      </footer>
+      <div>Contact Us:</div>
+      <div>Email: <a href="mailto:alert@schoolwool.site">alert@schoolwool.site</a></div>
+      <div>
+        © {new Date().getFullYear()} Little Guardian. All rights reserved. 
+        <NavLink to="privacy-policy">Privacy Policy</NavLink>
+      </div>
+    </footer>
     </div>
   );
 }
