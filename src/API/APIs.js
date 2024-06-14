@@ -20,6 +20,7 @@ const ENDPOINT = {
   LISTSTUDENTS: '/api/user/students',
   VIEWATTANDANCE: '/api/user/viewAttendance',
   PUBLICPROFILE: '/api/school',
+  STAFFATTENDANCE: '/api/staff/attendance',
 };
 
 // Auth
@@ -241,10 +242,28 @@ const publicprofile = async (payload) => {
   const opt = {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
   };
-  return await fetch(BASEURL + ENDPOINT.PUBLICPROFILE+"?profile=" + payload.query, opt);
+  return await fetch(
+    BASEURL + ENDPOINT.PUBLICPROFILE + '?profile=' + payload.query,
+    opt
+  );
+};
+
+const staffAttendance = async (payload) => {
+  const opt = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${payload.token}`,
+    },
+    body: JSON.stringify({
+      schoolId: payload.schoolId,
+      approximateLocation: payload.approximateLocation,
+    }),
+  };
+  return await fetch(BASEURL + ENDPOINT.STAFFATTENDANCE, opt);
 };
 
 export {
@@ -266,5 +285,6 @@ export {
   resetpassword,
   students,
   viewattandance,
-  publicprofile
+  publicprofile,
+  staffAttendance,
 };

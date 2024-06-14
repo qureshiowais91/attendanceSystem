@@ -32,7 +32,7 @@ const QRScanner = ({ onScan }) => {
       scanner.start(
         deviceId,
         {
-          fps: 2,
+          fps: 4,
           qrbox: 250,
         },
         (qrCode) => {

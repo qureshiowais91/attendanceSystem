@@ -1,12 +1,23 @@
 import QRScanner from '../../../../components/qr_scanner/QRScanner';
 import { useState } from 'react';
+import { staffAttendance } from '../../../../API/APIs';
+import { useSelector } from 'react-redux';
+
 export const StaffAttandaceScanner = () => {
   const [scannedData, setScannedData] = useState('');
+  const token = useSelector((state) => state.auth.jwt);
 
   // Define the onScan callback function
   const handleScan = (data) => {
     setScannedData(data);
-  
+    (async () => {
+      const payload = {
+        token,
+        schoolId: data,
+        approximateLocation: 'will add later',
+      };
+      await staffAttendance(payload);
+    })();
   };
 
   return (
