@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Html5Qrcode } from 'html5-qrcode';
 
 const QRScanner = ({ onScan }) => {
@@ -7,6 +8,7 @@ const QRScanner = ({ onScan }) => {
   const html5QrCodeRef = useRef(null);
   const [cameraDevices, setCameraDevices] = useState([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState(null); 
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
     const qrCodeScanner = new Html5Qrcode('qr-reader');
@@ -37,6 +39,8 @@ const QRScanner = ({ onScan }) => {
         },
         (qrCode) => {
           onScan(qrCode);
+          // scanner.stop();
+          navigate("/teacher/profile"); // Navigate to "/teacher/profile" using navigate
         },
         (errorMessage) => {
           console.error(errorMessage);
@@ -56,7 +60,7 @@ const QRScanner = ({ onScan }) => {
         html5QrCodeRef.current.stop();
       }
     };
-  }, [onScan]);
+  }, [onScan, navigate]); // Include navigate in dependency array
 
   // Function to handle camera change
   const handleCameraChange = (deviceId) => {
