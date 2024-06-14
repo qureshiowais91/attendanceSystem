@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ThemeToggleButton from '../components/Theme/ThemeToggle';
+import ThemeToggleButton from './Theme/ThemeToggle';
 import { useDispatch } from 'react-redux';
 
 import {
