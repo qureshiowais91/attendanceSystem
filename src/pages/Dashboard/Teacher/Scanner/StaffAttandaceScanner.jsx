@@ -6,6 +6,7 @@ export const StaffAttandaceScanner = () => {
   // Define the onScan callback function
   const handleScan = (data) => {
     setScannedData(data);
+  
   };
 
   return (

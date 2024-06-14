@@ -6,7 +6,7 @@ const QRScanner = ({ onScan }) => {
   const videoRef = useRef(null);
   const html5QrCodeRef = useRef(null);
   const [cameraDevices, setCameraDevices] = useState([]);
-  const [selectedDeviceId, setSelectedDeviceId] = useState(null); // State to store the selected device ID
+  const [selectedDeviceId, setSelectedDeviceId] = useState(null); 
 
   useEffect(() => {
     const qrCodeScanner = new Html5Qrcode('qr-reader');
@@ -17,8 +17,10 @@ const QRScanner = ({ onScan }) => {
         const devices = await Html5Qrcode.getCameras();
         setCameraDevices(devices);
         if (devices.length > 0) {
-          setSelectedDeviceId(devices[1].id); // Select the first device by default
-          startScanner(qrCodeScanner, devices[1].id);
+          // Find the back camera if available
+          const backCamera = devices.find(device => device.label.toLowerCase().includes('back'));
+          setSelectedDeviceId(backCamera ? backCamera.id : devices[0].id);
+          startScanner(qrCodeScanner, backCamera ? backCamera.id : devices[0].id);
         }
       } catch (error) {
         console.error('Error enumerating devices:', error);
@@ -67,8 +69,7 @@ const QRScanner = ({ onScan }) => {
 
   return (
     <div id='qr-reader' style={{ width: '100%' }}>
-       <select value={selectedDeviceId} onChange={(e) => handleCameraChange(e.target.value)}>
-        <br/>
+      <select value={selectedDeviceId} onChange={(e) => handleCameraChange(e.target.value)}>
         {cameraDevices.map((device) => (
           <option key={device.deviceId} value={device.id}>
             {device.label || `Camera ${device.deviceId}`}
@@ -76,7 +77,6 @@ const QRScanner = ({ onScan }) => {
         ))}
       </select>
       <video ref={videoRef} style={{ width: '100%' }} />
-     
     </div>
   );
 };
