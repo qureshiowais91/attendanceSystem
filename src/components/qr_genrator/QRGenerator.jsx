@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import QRCode from 'react-qr-code';
 
 const QRGenerator = ({id}) => {
+  console.log(id)
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ maxWidth: '256px', width: '100%' }}>
