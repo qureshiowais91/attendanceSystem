@@ -42,9 +42,9 @@ import { StaffAttandaceScanner } from './pages/Dashboard/Teacher/Scanner/StaffAt
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// import LogRocket from 'logrocket';
+import LogRocket from 'logrocket';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-// LogRocket.init('jo8m9z/projectalpha');
+LogRocket.init('jo8m9z/projectalpha');
 
 const router = createBrowserRouter(
   createRoutesFromElements(
