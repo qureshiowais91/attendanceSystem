@@ -77,7 +77,7 @@ function AdminLayout() {
             
 
             <ListItem component={Link} to='/teacher/attendance/scanner'>
-              <ListItemText primary='Scan Attandance' />
+              <ListItemText primary='Scan To Mark Attendance' />
             </ListItem>
             
               
