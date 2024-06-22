@@ -58,7 +58,6 @@ function AdminLayout() {
           }}
         >
           <List>
-          
             <ListItem
               button
               component={Link}
@@ -92,7 +91,7 @@ function AdminLayout() {
             >
               <ListItemText primary='List Attendance' />
             </ListItem>
-        
+
             <ListItem
               button
               component={Link}
@@ -102,6 +101,14 @@ function AdminLayout() {
               <ListItemText primary='Staff Attendance QR' />
             </ListItem>
 
+            <ListItem
+              button
+              component={Link}
+              to='/admin/staff/attendanceList'
+              selected={location.pathname === '/admin/staff/attendanceList'}
+            >
+              <ListItemText primary='View Teacher Profile' />
+            </ListItem>
 
             <ListItem>
               {/* { darkMode, toggleDarkMode } */}
