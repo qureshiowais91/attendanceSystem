@@ -264,7 +264,7 @@ const staffAttendance = async (payload) => {
     }),
   };
   return await fetch(BASEURL + ENDPOINT.STAFFATTENDANCE, opt);
-};
+}
 
 export {
   register,

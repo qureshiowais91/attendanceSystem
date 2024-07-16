@@ -1,20 +1,26 @@
 import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 const SearchBar = () => {
+  const [teacher, setFindTeacher] = useState('');
+
   const handleSearch = () => {
     // Handle search functionality here
     console.log('Search clicked');
+    console.log(teacher);
   };
 
   const inputHandler = (e) => {
-    console.log(e.target.value);
+    setFindTeacher(() => {
+      return e.target.value;
+    });
   };
 
   //show array of emails
-  const fetchData = ()=>{
-    
-  }
+  const fetchData = () => {
+      
+  };
 
   return (
     <TextField
