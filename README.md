@@ -2,6 +2,11 @@
 
 Welcome to the Attendance System for School, a MERN stack application designed to simplify and streamline attendance management in educational institutions. This open-source project offers a comprehensive platform to track and manage student attendance with an intuitive user interface and robust backend.
 
+
+API Repo Link 
+https://github.com/qureshiowais91/projectAlphaAPI
+
+
 ## Table of Contents
 
 1. [Features](#features)
