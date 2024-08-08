@@ -34,7 +34,6 @@ To get started with the Attendance System for School, follow these steps:
 Ensure you have the following installed:
 
 - **Node.js** (v18.x or later)
-- **Backend in Other Repo**  // I will link it later
 
 ### Clone the Repository
 
